@@ -1,0 +1,26 @@
+{
+  "image": "request-places.png",
+  "device": "desktop",
+  "width": 448,
+  "height": 420,
+  "markers": {
+    "1": {
+      "x": 49.49,
+      "y": 8.1
+    },
+    "2": {
+      "x": 38.84,
+      "y": 38.81
+    },
+    "3": {
+      "x": 89.51,
+      "y": 61.19
+    },
+    "4": {
+      "x": 95.54,
+      "y": 89.64
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

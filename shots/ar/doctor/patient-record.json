@@ -1,0 +1,30 @@
+{
+  "image": "patient-record.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 24.45,
+      "y": 17.85
+    },
+    "2": {
+      "x": 67.9,
+      "y": 28.37
+    },
+    "3": {
+      "x": 13.51,
+      "y": 19.13
+    },
+    "4": {
+      "x": 60.36,
+      "y": 38.66
+    },
+    "5": {
+      "x": 59.87,
+      "y": 54.01
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

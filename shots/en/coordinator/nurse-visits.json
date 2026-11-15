@@ -1,0 +1,30 @@
+{
+  "image": "nurse-visits.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 888,
+  "markers": {
+    "1": {
+      "x": 8.23,
+      "y": 13.13
+    },
+    "2": {
+      "x": 65.15,
+      "y": 39.49
+    },
+    "3": {
+      "x": 80.34,
+      "y": 41.75
+    },
+    "4": {
+      "x": 34.89,
+      "y": 76.96
+    },
+    "5": {
+      "x": 57.31,
+      "y": 96.11
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

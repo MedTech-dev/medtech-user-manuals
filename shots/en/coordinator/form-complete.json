@@ -1,0 +1,30 @@
+{
+  "image": "form-complete.png",
+  "device": "desktop",
+  "width": 1047,
+  "height": 904,
+  "markers": {
+    "1": {
+      "x": 25.43,
+      "y": 14.05
+    },
+    "2": {
+      "x": 74.57,
+      "y": 14.05
+    },
+    "3": {
+      "x": 30.49,
+      "y": 26.88
+    },
+    "4": {
+      "x": 12.62,
+      "y": 87.33
+    },
+    "5": {
+      "x": 16.41,
+      "y": 96.07
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

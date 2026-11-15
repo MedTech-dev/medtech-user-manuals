@@ -1,0 +1,30 @@
+{
+  "image": "user-access.png",
+  "device": "desktop",
+  "width": 1100,
+  "height": 787,
+  "markers": {
+    "1": {
+      "x": 71.64,
+      "y": 19.95
+    },
+    "2": {
+      "x": 56.01,
+      "y": 25.73
+    },
+    "3": {
+      "x": 49.01,
+      "y": 30.37
+    },
+    "4": {
+      "x": 39.52,
+      "y": 85.64
+    },
+    "5": {
+      "x": 28.55,
+      "y": 90.91
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

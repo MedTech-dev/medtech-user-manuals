@@ -1,0 +1,14 @@
+{
+  "image": "packaging.png",
+  "device": "phone",
+  "width": 393,
+  "height": 727,
+  "markers": {
+    "1": {
+      "x": 58.37,
+      "y": 45.32
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,30 @@
+{
+  "image": "cases-list.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 67.89,
+      "y": 19.71
+    },
+    "2": {
+      "x": 1.98,
+      "y": 31.16
+    },
+    "3": {
+      "x": 48.72,
+      "y": 38.84
+    },
+    "4": {
+      "x": 9.96,
+      "y": 39.77
+    },
+    "5": {
+      "x": 7.99,
+      "y": 54.01
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

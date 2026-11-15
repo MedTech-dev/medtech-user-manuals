@@ -1,0 +1,26 @@
+{
+  "image": "builder-consent.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 958,
+  "markers": {
+    "1": {
+      "x": 77.01,
+      "y": 31.05
+    },
+    "2": {
+      "x": 71.24,
+      "y": 38.78
+    },
+    "3": {
+      "x": 80.6,
+      "y": 59.03
+    },
+    "4": {
+      "x": 35.71,
+      "y": 59.03
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

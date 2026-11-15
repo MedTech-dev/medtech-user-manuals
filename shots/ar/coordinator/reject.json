@@ -1,0 +1,26 @@
+{
+  "image": "reject.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 392,
+  "markers": {
+    "1": {
+      "x": 42.09,
+      "y": 18.49
+    },
+    "2": {
+      "x": 25.1,
+      "y": 35.97
+    },
+    "3": {
+      "x": 23.75,
+      "y": 60.97
+    },
+    "4": {
+      "x": 25.42,
+      "y": 85.33
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

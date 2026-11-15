@@ -1,0 +1,26 @@
+{
+  "image": "questionnaire.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 1200,
+  "markers": {
+    "1": {
+      "x": 57.81,
+      "y": 8.13
+    },
+    "2": {
+      "x": 50.7,
+      "y": 16.08
+    },
+    "3": {
+      "x": 62.85,
+      "y": 42.58
+    },
+    "4": {
+      "x": 52.26,
+      "y": 55.75
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

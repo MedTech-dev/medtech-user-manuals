@@ -1,0 +1,30 @@
+{
+  "image": "delete-permanent.png",
+  "device": "desktop",
+  "width": 512,
+  "height": 658,
+  "markers": {
+    "1": {
+      "x": 55.4,
+      "y": 57.07
+    },
+    "2": {
+      "x": 94.57,
+      "y": 63.22
+    },
+    "3": {
+      "x": 95.65,
+      "y": 69.91
+    },
+    "4": {
+      "x": 90.82,
+      "y": 85.56
+    },
+    "5": {
+      "x": 96.09,
+      "y": 93.39
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,30 @@
+{
+  "image": "rx-medication.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 36.38,
+      "y": 39.65
+    },
+    "2": {
+      "x": 77.16,
+      "y": 43.9
+    },
+    "3": {
+      "x": 77.16,
+      "y": 56.69
+    },
+    "4": {
+      "x": 70.03,
+      "y": 72.91
+    },
+    "5": {
+      "x": 17.86,
+      "y": 11.28
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

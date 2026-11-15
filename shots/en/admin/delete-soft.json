@@ -1,0 +1,30 @@
+{
+  "image": "delete-soft.png",
+  "device": "desktop",
+  "width": 512,
+  "height": 586,
+  "markers": {
+    "1": {
+      "x": 64.95,
+      "y": 23.81
+    },
+    "2": {
+      "x": 92.24,
+      "y": 35.49
+    },
+    "3": {
+      "x": 96.45,
+      "y": 51.19
+    },
+    "4": {
+      "x": 55.4,
+      "y": 64.08
+    },
+    "5": {
+      "x": 96.09,
+      "y": 92.58
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

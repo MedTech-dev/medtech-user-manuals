@@ -1,0 +1,30 @@
+{
+  "image": "builder-routes.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 710,
+  "markers": {
+    "1": {
+      "x": 85.04,
+      "y": 41.9
+    },
+    "2": {
+      "x": 81.91,
+      "y": 50.07
+    },
+    "3": {
+      "x": 82.3,
+      "y": 58.24
+    },
+    "4": {
+      "x": 84.63,
+      "y": 66.41
+    },
+    "5": {
+      "x": 61.47,
+      "y": 74.15
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

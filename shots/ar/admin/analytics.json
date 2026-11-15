@@ -1,0 +1,30 @@
+{
+  "image": "analytics.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 73.37,
+      "y": 19.48
+    },
+    "2": {
+      "x": 29.49,
+      "y": 19.48
+    },
+    "3": {
+      "x": 65.63,
+      "y": 36.34
+    },
+    "4": {
+      "x": 66.27,
+      "y": 47.97
+    },
+    "5": {
+      "x": 25.44,
+      "y": 47.97
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

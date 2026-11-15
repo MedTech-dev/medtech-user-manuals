@@ -1,0 +1,22 @@
+{
+  "image": "locked-code.png",
+  "device": "desktop",
+  "width": 1047,
+  "height": 176,
+  "markers": {
+    "1": {
+      "x": 41.9,
+      "y": 46.59
+    },
+    "2": {
+      "x": 70.11,
+      "y": 76.99
+    },
+    "3": {
+      "x": 86.61,
+      "y": 46.59
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

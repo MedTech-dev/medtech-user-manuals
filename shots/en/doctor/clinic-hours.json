@@ -1,0 +1,30 @@
+{
+  "image": "clinic-hours.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 28.07,
+      "y": 36.45
+    },
+    "2": {
+      "x": 94.18,
+      "y": 36.51
+    },
+    "3": {
+      "x": 41.25,
+      "y": 47.21
+    },
+    "4": {
+      "x": 76.39,
+      "y": 47.21
+    },
+    "5": {
+      "x": 93.89,
+      "y": 55.52
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,26 @@
+{
+  "image": "untracked-dose.png",
+  "device": "phone",
+  "width": 393,
+  "height": 727,
+  "markers": {
+    "1": {
+      "x": 93.23,
+      "y": 49.86
+    },
+    "2": {
+      "x": 58.78,
+      "y": 60.11
+    },
+    "3": {
+      "x": 68.96,
+      "y": 71.11
+    },
+    "4": {
+      "x": 85.08,
+      "y": 77.44
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

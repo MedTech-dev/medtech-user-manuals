@@ -1,0 +1,18 @@
+{
+  "image": "pharmacy-reset.png",
+  "device": "desktop",
+  "width": 448,
+  "height": 336,
+  "markers": {
+    "1": {
+      "x": 39.31,
+      "y": 10.12
+    },
+    "2": {
+      "x": 67.14,
+      "y": 67.26
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

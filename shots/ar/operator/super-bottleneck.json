@@ -1,0 +1,26 @@
+{
+  "image": "super-bottleneck.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 804,
+  "markers": {
+    "1": {
+      "x": 73.71,
+      "y": 16.23
+    },
+    "2": {
+      "x": 14.91,
+      "y": 16.42
+    },
+    "3": {
+      "x": 73.21,
+      "y": 28.05
+    },
+    "4": {
+      "x": 73.36,
+      "y": 81.9
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

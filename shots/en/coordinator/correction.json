@@ -1,0 +1,30 @@
+{
+  "image": "correction.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 412,
+  "markers": {
+    "1": {
+      "x": 72.38,
+      "y": 20.02
+    },
+    "2": {
+      "x": 74.9,
+      "y": 39.08
+    },
+    "3": {
+      "x": 76.25,
+      "y": 62.86
+    },
+    "4": {
+      "x": 60.04,
+      "y": 75.97
+    },
+    "5": {
+      "x": 74.58,
+      "y": 86.04
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,26 @@
+{
+  "image": "approved-actions.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 93.81,
+      "y": 20.47
+    },
+    "2": {
+      "x": 27.7,
+      "y": 33.49
+    },
+    "3": {
+      "x": 47.26,
+      "y": 37.85
+    },
+    "4": {
+      "x": 31.39,
+      "y": 46.1
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

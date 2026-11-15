@@ -1,0 +1,26 @@
+{
+  "image": "abuse-signals.png",
+  "device": "desktop",
+  "width": 1047,
+  "height": 230,
+  "markers": {
+    "1": {
+      "x": 67.03,
+      "y": 10.43
+    },
+    "2": {
+      "x": 40.63,
+      "y": 22.17
+    },
+    "3": {
+      "x": 27.31,
+      "y": 33.91
+    },
+    "4": {
+      "x": 79.59,
+      "y": 68.26
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

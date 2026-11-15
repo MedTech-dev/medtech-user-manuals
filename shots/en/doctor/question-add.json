@@ -1,0 +1,30 @@
+{
+  "image": "question-add.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 81.22,
+      "y": 63.02
+    },
+    "2": {
+      "x": 82.17,
+      "y": 70.93
+    },
+    "3": {
+      "x": 82.17,
+      "y": 78.84
+    },
+    "4": {
+      "x": 50.17,
+      "y": 85.99
+    },
+    "5": {
+      "x": 81,
+      "y": 90.64
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

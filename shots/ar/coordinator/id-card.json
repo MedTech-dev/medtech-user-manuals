@@ -1,0 +1,22 @@
+{
+  "image": "id-card.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 428,
+  "markers": {
+    "1": {
+      "x": 51.16,
+      "y": 11.23
+    },
+    "2": {
+      "x": 50,
+      "y": 57.02
+    },
+    "3": {
+      "x": 22.92,
+      "y": 9.12
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

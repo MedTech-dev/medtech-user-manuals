@@ -1,0 +1,30 @@
+{
+  "image": "builder-funding.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 868,
+  "markers": {
+    "1": {
+      "x": 16.64,
+      "y": 35.89
+    },
+    "2": {
+      "x": 63.64,
+      "y": 35.89
+    },
+    "3": {
+      "x": 60.29,
+      "y": 51.32
+    },
+    "4": {
+      "x": 19.05,
+      "y": 67.45
+    },
+    "5": {
+      "x": 20.96,
+      "y": 76.44
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,26 @@
+{
+  "image": "coupon-limit.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 532,
+  "markers": {
+    "1": {
+      "x": 52.05,
+      "y": 37.88
+    },
+    "2": {
+      "x": 25,
+      "y": 48.4
+    },
+    "3": {
+      "x": 14.26,
+      "y": 66.82
+    },
+    "4": {
+      "x": 10.84,
+      "y": 87.31
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

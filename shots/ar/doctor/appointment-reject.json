@@ -1,0 +1,26 @@
+{
+  "image": "appointment-reject.png",
+  "device": "desktop",
+  "width": 512,
+  "height": 296,
+  "markers": {
+    "1": {
+      "x": 65.32,
+      "y": 11.49
+    },
+    "2": {
+      "x": 9.18,
+      "y": 48.99
+    },
+    "3": {
+      "x": 28.14,
+      "y": 83.28
+    },
+    "4": {
+      "x": 7.03,
+      "y": 83.28
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

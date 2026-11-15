@@ -1,0 +1,26 @@
+{
+  "image": "delivery-codes.png",
+  "device": "desktop",
+  "width": 1047,
+  "height": 262,
+  "markers": {
+    "1": {
+      "x": 16.76,
+      "y": 12.6
+    },
+    "2": {
+      "x": 70.17,
+      "y": 32.82
+    },
+    "3": {
+      "x": 67.56,
+      "y": 65.65
+    },
+    "4": {
+      "x": 62.93,
+      "y": 84.54
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

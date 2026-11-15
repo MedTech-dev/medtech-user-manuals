@@ -1,0 +1,30 @@
+{
+  "image": "provider-merge.png",
+  "device": "desktop",
+  "width": 576,
+  "height": 452,
+  "markers": {
+    "1": {
+      "x": 51.23,
+      "y": 12.94
+    },
+    "2": {
+      "x": 97.05,
+      "y": 24.34
+    },
+    "3": {
+      "x": 3.88,
+      "y": 60.29
+    },
+    "4": {
+      "x": 3.13,
+      "y": 75.55
+    },
+    "5": {
+      "x": 3.47,
+      "y": 90.38
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

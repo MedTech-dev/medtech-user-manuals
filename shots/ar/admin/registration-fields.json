@@ -1,0 +1,30 @@
+{
+  "image": "registration-fields.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 11.73,
+      "y": 12.33
+    },
+    "2": {
+      "x": 68.08,
+      "y": 22.5
+    },
+    "3": {
+      "x": 55.6,
+      "y": 30.7
+    },
+    "4": {
+      "x": 15.74,
+      "y": 35.93
+    },
+    "5": {
+      "x": 3.88,
+      "y": 35.93
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

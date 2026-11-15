@@ -1,0 +1,22 @@
+{
+  "image": "enrol-known-patient.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 604,
+  "markers": {
+    "1": {
+      "x": 30.67,
+      "y": 53.06
+    },
+    "2": {
+      "x": 27.28,
+      "y": 66.97
+    },
+    "3": {
+      "x": 29.3,
+      "y": 72.68
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

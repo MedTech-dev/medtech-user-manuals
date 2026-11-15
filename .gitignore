@@ -1,0 +1,5 @@
+# Review sheets from tools/capture/contact-sheet.mjs
+shots/_sheet-*.png
+node_modules/
+.DS_Store
+Thumbs.db

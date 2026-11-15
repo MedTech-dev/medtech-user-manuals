@@ -1,0 +1,30 @@
+{
+  "image": "pharmacies.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 97.51,
+      "y": 11.34
+    },
+    "2": {
+      "x": 50.15,
+      "y": 17.44
+    },
+    "3": {
+      "x": 45.6,
+      "y": 29.88
+    },
+    "4": {
+      "x": 85,
+      "y": 52.62
+    },
+    "5": {
+      "x": 95.55,
+      "y": 29.94
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

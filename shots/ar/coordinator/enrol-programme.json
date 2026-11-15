@@ -1,0 +1,22 @@
+{
+  "image": "enrol-programme.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 242,
+  "markers": {
+    "1": {
+      "x": 70.27,
+      "y": 15.7
+    },
+    "2": {
+      "x": 78.37,
+      "y": 46.49
+    },
+    "3": {
+      "x": 60.8,
+      "y": 78.1
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

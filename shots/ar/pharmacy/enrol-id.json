@@ -1,0 +1,18 @@
+{
+  "image": "enrol-id.png",
+  "device": "phone",
+  "width": 393,
+  "height": 727,
+  "markers": {
+    "1": {
+      "x": 90.33,
+      "y": 25.03
+    },
+    "2": {
+      "x": 40.59,
+      "y": 35.97
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

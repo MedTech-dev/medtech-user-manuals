@@ -1,0 +1,30 @@
+{
+  "image": "assistant-add.png",
+  "device": "desktop",
+  "width": 512,
+  "height": 666,
+  "markers": {
+    "1": {
+      "x": 90.82,
+      "y": 21.47
+    },
+    "2": {
+      "x": 90.82,
+      "y": 32.28
+    },
+    "3": {
+      "x": 90.82,
+      "y": 47
+    },
+    "4": {
+      "x": 50,
+      "y": 62.31
+    },
+    "5": {
+      "x": 27.63,
+      "y": 77.1
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

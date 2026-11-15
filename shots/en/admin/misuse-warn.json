@@ -1,0 +1,26 @@
+{
+  "image": "misuse-warn.png",
+  "device": "desktop",
+  "width": 512,
+  "height": 266,
+  "markers": {
+    "1": {
+      "x": 47.13,
+      "y": 12.78
+    },
+    "2": {
+      "x": 92.62,
+      "y": 21.99
+    },
+    "3": {
+      "x": 90.82,
+      "y": 56.02
+    },
+    "4": {
+      "x": 96.09,
+      "y": 83.65
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

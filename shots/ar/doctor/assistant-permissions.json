@@ -1,0 +1,30 @@
+{
+  "image": "assistant-permissions.png",
+  "device": "desktop",
+  "width": 512,
+  "height": 1275,
+  "markers": {
+    "1": {
+      "x": 66.02,
+      "y": 64.98
+    },
+    "2": {
+      "x": 22.02,
+      "y": 76.24
+    },
+    "3": {
+      "x": 68.1,
+      "y": 84.75
+    },
+    "4": {
+      "x": 20.7,
+      "y": 90.82
+    },
+    "5": {
+      "x": 3.91,
+      "y": 96.59
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

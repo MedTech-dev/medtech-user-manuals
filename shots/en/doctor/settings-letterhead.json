@@ -1,0 +1,30 @@
+{
+  "image": "settings-letterhead.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 38.05,
+      "y": 40.29
+    },
+    "2": {
+      "x": 22.62,
+      "y": 76.86
+    },
+    "3": {
+      "x": 30.77,
+      "y": 83.66
+    },
+    "4": {
+      "x": 36.23,
+      "y": 93.55
+    },
+    "5": {
+      "x": 81.77,
+      "y": 26.51
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

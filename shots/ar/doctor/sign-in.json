@@ -1,0 +1,30 @@
+{
+  "image": "sign-in.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 23.55,
+      "y": 44.3
+    },
+    "2": {
+      "x": 23.55,
+      "y": 52.67
+    },
+    "3": {
+      "x": 34.31,
+      "y": 53.84
+    },
+    "4": {
+      "x": 18.45,
+      "y": 62.15
+    },
+    "5": {
+      "x": 7.29,
+      "y": 4.65
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

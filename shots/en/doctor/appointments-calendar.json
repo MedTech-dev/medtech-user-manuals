@@ -1,0 +1,30 @@
+{
+  "image": "appointments-calendar.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 19.99,
+      "y": 26.98
+    },
+    "2": {
+      "x": 97.58,
+      "y": 26.98
+    },
+    "3": {
+      "x": 18.96,
+      "y": 31.86
+    },
+    "4": {
+      "x": 34.23,
+      "y": 48.84
+    },
+    "5": {
+      "x": 61.16,
+      "y": 59.46
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

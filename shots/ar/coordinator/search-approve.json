@@ -1,0 +1,22 @@
+{
+  "image": "search-approve.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 456,
+  "markers": {
+    "1": {
+      "x": 25.1,
+      "y": 36.62
+    },
+    "2": {
+      "x": 48.61,
+      "y": 43.64
+    },
+    "3": {
+      "x": 25.42,
+      "y": 87.39
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

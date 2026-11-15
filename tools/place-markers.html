@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Place markers</title>
+<style>
+  :root { --accent: #1f5fc8; --line: #d9dee7; --ink: #1d2433; --quiet: #5b6577; }
+  body { margin: 0; font: 15px/1.5 system-ui, sans-serif; color: var(--ink); background: #f5f7fa; }
+  header { padding: 14px 20px; background: #fff; border-bottom: 1px solid var(--line); display: flex; gap: 12px; flex-wrap: wrap; align-items: center; }
+  header h1 { font-size: 17px; margin: 0 12px 0 0; }
+  select, button { font: inherit; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; background: #fff; }
+  button.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+  main { display: grid; grid-template-columns: minmax(0, auto) minmax(280px, 1fr); gap: 24px; padding: 20px; align-items: start; }
+  .stage { position: relative; display: inline-block; border: 1px solid var(--line); background: #fff; user-select: none; }
+  .stage img { display: block; max-width: min(60vw, 900px); max-height: 82vh; }
+  .stage.phone img { max-width: 380px; }
+  .m { position: absolute; transform: translate(-50%, -50%); width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; border: 2px solid #fff;
+       font: 700 13px/22px system-ui; text-align: center; cursor: grab; box-shadow: 0 2px 6px rgba(0,0,0,.3); }
+  ol { padding-inline-start: 22px; } li.placed { color: var(--quiet); } li.next { font-weight: 700; }
+  textarea { width: 100%; min-height: 170px; font: 12px/1.4 ui-monospace, monospace; }
+  .hint { color: var(--quiet); font-size: 13px; }
+  .missing { padding: 40px; color: var(--quiet); }
+</style>
+</head>
+<body>
+<header>
+  <h1>Place markers</h1>
+  <select id="lang"><option>en</option><option>ar</option></select>
+  <select id="manual"></select>
+  <select id="shot"></select>
+  <select id="device"><option value="phone">phone</option><option value="desktop">desktop</option></select>
+  <button id="undo">Undo last</button>
+  <button id="clear">Clear</button>
+  <button id="save" class="primary">Download JSON</button>
+</header>
+<main>
+  <div id="stageWrap"></div>
+  <section>
+    <p class="hint">Put the screenshot at <code id="path"></code>, then click on it to drop marker 1, 2, 3… in the order of the list below. Drag a marker to move it; double-click it to remove it. Save the JSON next to the PNG and run <code>node tools/build.mjs</code>.</p>
+    <ol id="callouts"></ol>
+    <textarea id="json" readonly></textarea>
+  </section>
+</main>
+<script>
+// Serve the repo root over http (e.g. python -m http.server) and open /tools/place-markers.html.
+const MANUALS = ['operator', 'coordinator', 'doctor', 'pharmacy', 'admin', 'patient-app'];
+const $ = (id) => document.getElementById(id);
+const qs = new URLSearchParams(location.search);
+let shots = [], markers = {}, img = null;
+
+$('manual').innerHTML = MANUALS.map((m) => `<option>${m}</option>`).join('');
+$('lang').value = qs.get('lang') ?? 'en';
+$('manual').value = qs.get('manual') ?? 'patient-app';
+
+async function loadManual() {
+  const src = await fetch(`../content/${$('lang').value}/${$('manual').value}.md`).then((r) => (r.ok ? r.text() : ''));
+  const lines = src.replace(/\r/g, '').split('\n');
+  const device = (/^device:\s*(\w+)/m.exec(src) ?? [])[1] ?? 'desktop';
+  $('device').value = device;
+  shots = [];
+  for (let i = 0; i < lines.length; i++) {
+    if (!lines[i].startsWith('::shot ')) continue;
+    const [name, caption = ''] = lines[i].slice(7).split('|').map((s) => s.trim());
+    const callouts = [];
+    let j = i + 1;
+    while (j < lines.length && !lines[j].trim()) j++;
+    while (j < lines.length && /^\d+\.\s+/.test(lines[j])) callouts.push(lines[j++].replace(/^\d+\.\s+/, ''));
+    shots.push({ name, caption, callouts });
+  }
+  $('shot').innerHTML = shots.map((s) => `<option value="${s.name}">${s.name}</option>`).join('');
+  if (qs.get('name') && shots.some((s) => s.name === qs.get('name'))) $('shot').value = qs.get('name');
+  await loadShot();
+}
+
+async function loadShot() {
+  const s = shots.find((x) => x.name === $('shot').value);
+  const base = `../shots/${$('lang').value}/${$('manual').value}/${s?.name}`;
+  $('path').textContent = `shots/${$('lang').value}/${$('manual').value}/${s?.name}.png`;
+  const existing = await fetch(`${base}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  markers = existing?.markers ?? {};
+  if (existing?.device) $('device').value = existing.device;
+  img = new Image();
+  img.onload = render;
+  img.onerror = () => { img = null; render(); };
+  img.src = `${base}.png?${Date.now()}`;
+}
+
+function render() {
+  const s = shots.find((x) => x.name === $('shot').value);
+  const wrap = $('stageWrap');
+  if (!img) { wrap.innerHTML = `<div class="missing">No screenshot yet at ${$('path').textContent}</div>`; }
+  else {
+    wrap.innerHTML = '';
+    const stage = document.createElement('div');
+    stage.className = `stage ${$('device').value}`;
+    stage.appendChild(img);
+    for (const [n, p] of Object.entries(markers)) {
+      const b = document.createElement('div');
+      b.className = 'm'; b.textContent = n; b.style.left = `${p.x}%`; b.style.top = `${p.y}%`;
+      b.ondblclick = (e) => { e.stopPropagation(); delete markers[n]; render(); };
+      b.onpointerdown = (e) => {
+        e.stopPropagation(); b.setPointerCapture(e.pointerId);
+        b.onpointermove = (ev) => { markers[n] = pos(ev, stage); b.style.left = `${markers[n].x}%`; b.style.top = `${markers[n].y}%`; };
+        b.onpointerup = () => { b.onpointermove = null; render(); };
+      };
+      stage.appendChild(b);
+    }
+    stage.onclick = (e) => {
+      const next = (s?.callouts ?? []).findIndex((_, i) => !markers[i + 1]);
+      const n = next >= 0 ? next + 1 : Object.keys(markers).length + 1;
+      markers[n] = pos(e, stage); render();
+    };
+    wrap.appendChild(stage);
+  }
+  const nextIdx = (s?.callouts ?? []).findIndex((_, i) => !markers[i + 1]);
+  $('callouts').innerHTML = (s?.callouts ?? []).map((c, i) =>
+    `<li class="${markers[i + 1] ? 'placed' : i === nextIdx ? 'next' : ''}">${c.replace(/</g, '&lt;')}</li>`).join('');
+  $('json').value = JSON.stringify(meta(), null, 2);
+}
+
+function pos(e, stage) {
+  const r = stage.getBoundingClientRect();
+  const clamp = (v) => Math.min(Math.max(v, 1), 99);
+  return { x: +clamp(((e.clientX - r.left) / r.width) * 100).toFixed(2), y: +clamp(((e.clientY - r.top) / r.height) * 100).toFixed(2) };
+}
+
+function meta() {
+  return {
+    image: `${$('shot').value}.png`, device: $('device').value,
+    width: img?.naturalWidth ?? 0, height: img?.naturalHeight ?? 0,
+    markers, captured: new Date().toISOString().slice(0, 10), source: 'placed by hand',
+  };
+}
+
+$('lang').onchange = loadManual;
+$('manual').onchange = loadManual;
+$('shot').onchange = loadShot;
+$('device').onchange = render;
+$('undo').onclick = () => { const last = Math.max(0, ...Object.keys(markers).map(Number)); delete markers[last]; render(); };
+$('clear').onclick = () => { markers = {}; render(); };
+$('save').onclick = () => {
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([JSON.stringify(meta(), null, 2) + '\n'], { type: 'application/json' }));
+  a.download = `${$('shot').value}.json`;
+  a.click();
+};
+loadManual();
+</script>
+</body>
+</html>

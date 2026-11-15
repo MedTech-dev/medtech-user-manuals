@@ -1,0 +1,22 @@
+{
+  "image": "program-stop.png",
+  "device": "desktop",
+  "width": 1100,
+  "height": 318,
+  "markers": {
+    "1": {
+      "x": 58.71,
+      "y": 19.5
+    },
+    "2": {
+      "x": 35.44,
+      "y": 52.04
+    },
+    "3": {
+      "x": 71.45,
+      "y": 77.52
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

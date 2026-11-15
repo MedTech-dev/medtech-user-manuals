@@ -1,0 +1,22 @@
+{
+  "image": "requests-refuse.png",
+  "device": "phone",
+  "width": 393,
+  "height": 727,
+  "markers": {
+    "1": {
+      "x": 22.36,
+      "y": 24.42
+    },
+    "2": {
+      "x": 90.33,
+      "y": 60.25
+    },
+    "3": {
+      "x": 65.9,
+      "y": 71.18
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,30 @@
+{
+  "image": "legal-changes.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 51.32,
+      "y": 19.42
+    },
+    "2": {
+      "x": 61.25,
+      "y": 27.33
+    },
+    "3": {
+      "x": 64.16,
+      "y": 31.22
+    },
+    "4": {
+      "x": 65.81,
+      "y": 36.8
+    },
+    "5": {
+      "x": 68.06,
+      "y": 41.28
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

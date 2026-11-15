@@ -1,0 +1,22 @@
+{
+  "image": "approve-tier.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 428,
+  "markers": {
+    "1": {
+      "x": 74.9,
+      "y": 37.62
+    },
+    "2": {
+      "x": 76.25,
+      "y": 60.51
+    },
+    "3": {
+      "x": 74.58,
+      "y": 86.57
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

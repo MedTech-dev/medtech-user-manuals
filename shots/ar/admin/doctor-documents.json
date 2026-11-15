@@ -1,0 +1,30 @@
+{
+  "image": "doctor-documents.png",
+  "device": "desktop",
+  "width": 1047,
+  "height": 340,
+  "markers": {
+    "1": {
+      "x": 88.43,
+      "y": 9.57
+    },
+    "2": {
+      "x": 66.43,
+      "y": 38
+    },
+    "3": {
+      "x": 36.45,
+      "y": 38.14
+    },
+    "4": {
+      "x": 37.02,
+      "y": 67.3
+    },
+    "5": {
+      "x": 12.88,
+      "y": 67.3
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

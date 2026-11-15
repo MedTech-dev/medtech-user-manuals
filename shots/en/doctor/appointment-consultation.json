@@ -1,0 +1,30 @@
+{
+  "image": "appointment-consultation.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 63.99,
+      "y": 18.02
+    },
+    "2": {
+      "x": 87.23,
+      "y": 49.42
+    },
+    "3": {
+      "x": 72.11,
+      "y": 39.36
+    },
+    "4": {
+      "x": 46.26,
+      "y": 65.64
+    },
+    "5": {
+      "x": 53.58,
+      "y": 74.13
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

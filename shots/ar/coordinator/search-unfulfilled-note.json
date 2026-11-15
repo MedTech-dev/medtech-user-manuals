@@ -1,0 +1,22 @@
+{
+  "image": "search-unfulfilled-note.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 329,
+  "markers": {
+    "1": {
+      "x": 26.13,
+      "y": 24
+    },
+    "2": {
+      "x": 23.75,
+      "y": 54.56
+    },
+    "3": {
+      "x": 25.42,
+      "y": 83.61
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,30 @@
+{
+  "image": "tenants.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 1.39,
+      "y": 11.34
+    },
+    "2": {
+      "x": 61.33,
+      "y": 27.79
+    },
+    "3": {
+      "x": 42.07,
+      "y": 27.79
+    },
+    "4": {
+      "x": 34.8,
+      "y": 27.85
+    },
+    "5": {
+      "x": 26.8,
+      "y": 27.79
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,30 @@
+{
+  "image": "requests.png",
+  "device": "phone",
+  "width": 393,
+  "height": 727,
+  "markers": {
+    "1": {
+      "x": 32.45,
+      "y": 16.16
+    },
+    "2": {
+      "x": 68.93,
+      "y": 30.67
+    },
+    "3": {
+      "x": 35.89,
+      "y": 44.09
+    },
+    "4": {
+      "x": 32.75,
+      "y": 51.79
+    },
+    "5": {
+      "x": 5.85,
+      "y": 70.15
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

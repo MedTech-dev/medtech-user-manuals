@@ -1,0 +1,26 @@
+{
+  "image": "clinic-manage.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 88.54,
+      "y": 27.56
+    },
+    "2": {
+      "x": 85.97,
+      "y": 64.77
+    },
+    "3": {
+      "x": 87.23,
+      "y": 75.47
+    },
+    "4": {
+      "x": 37.3,
+      "y": 98.08
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

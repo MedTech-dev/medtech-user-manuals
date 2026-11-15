@@ -1,0 +1,22 @@
+{
+  "image": "identity.png",
+  "device": "phone",
+  "width": 393,
+  "height": 727,
+  "markers": {
+    "1": {
+      "x": 52.52,
+      "y": 47.87
+    },
+    "2": {
+      "x": 60.6,
+      "y": 49.93
+    },
+    "3": {
+      "x": 93.89,
+      "y": 54.06
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

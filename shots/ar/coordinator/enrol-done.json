@@ -1,0 +1,26 @@
+{
+  "image": "enrol-done.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 27.53,
+      "y": 94.3
+    },
+    "2": {
+      "x": 54.88,
+      "y": 22.27
+    },
+    "3": {
+      "x": 6.57,
+      "y": 20
+    },
+    "4": {
+      "x": 60.76,
+      "y": 49.24
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

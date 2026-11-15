@@ -1,0 +1,26 @@
+{
+  "image": "hand-over.png",
+  "device": "phone",
+  "width": 393,
+  "height": 727,
+  "markers": {
+    "1": {
+      "x": 8.11,
+      "y": 38.65
+    },
+    "2": {
+      "x": 46.29,
+      "y": 54.61
+    },
+    "3": {
+      "x": 8.4,
+      "y": 89.82
+    },
+    "4": {
+      "x": 67.53,
+      "y": 95.53
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

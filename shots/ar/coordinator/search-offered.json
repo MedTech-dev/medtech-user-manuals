@@ -1,0 +1,18 @@
+{
+  "image": "search-offered.png",
+  "device": "desktop",
+  "width": 1047,
+  "height": 472,
+  "markers": {
+    "1": {
+      "x": 40.76,
+      "y": 22.38
+    },
+    "2": {
+      "x": 9.07,
+      "y": 22.48
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

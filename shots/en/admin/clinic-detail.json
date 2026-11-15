@@ -1,0 +1,22 @@
+{
+  "image": "clinic-detail.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 31.92,
+      "y": 13.66
+    },
+    "2": {
+      "x": 31.85,
+      "y": 30.64
+    },
+    "3": {
+      "x": 26.46,
+      "y": 73.95
+    }
+  },
+  "captured": "2026-11-15",
+  "source": "medtech-frontend main (mock data)"
+}

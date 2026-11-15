@@ -1,0 +1,30 @@
+{
+  "image": "program-checks.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 1266,
+  "markers": {
+    "1": {
+      "x": 17.88,
+      "y": 3.28
+    },
+    "2": {
+      "x": 88.75,
+      "y": 10.78
+    },
+    "3": {
+      "x": 84.46,
+      "y": 55.33
+    },
+    "4": {
+      "x": 51.59,
+      "y": 74.76
+    },
+    "5": {
+      "x": 83,
+      "y": 84.87
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

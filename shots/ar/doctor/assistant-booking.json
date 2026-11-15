@@ -1,0 +1,22 @@
+{
+  "image": "assistant-booking.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 16.97,
+      "y": 3.2
+    },
+    "2": {
+      "x": 53.45,
+      "y": 57.5
+    },
+    "3": {
+      "x": 54.45,
+      "y": 69.36
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

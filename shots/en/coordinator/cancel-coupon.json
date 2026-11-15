@@ -1,0 +1,30 @@
+{
+  "image": "cancel-coupon.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 534,
+  "markers": {
+    "1": {
+      "x": 74.51,
+      "y": 17.32
+    },
+    "2": {
+      "x": 74.9,
+      "y": 33.9
+    },
+    "3": {
+      "x": 76.25,
+      "y": 52.25
+    },
+    "4": {
+      "x": 73.83,
+      "y": 78.56
+    },
+    "5": {
+      "x": 74.58,
+      "y": 89.23
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

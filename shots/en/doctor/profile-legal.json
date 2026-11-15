@@ -1,0 +1,30 @@
+{
+  "image": "profile-legal.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 43.84,
+      "y": 39.13
+    },
+    "2": {
+      "x": 40.34,
+      "y": 46.86
+    },
+    "3": {
+      "x": 68.87,
+      "y": 53.29
+    },
+    "4": {
+      "x": 36.27,
+      "y": 72.61
+    },
+    "5": {
+      "x": 39.48,
+      "y": 92.15
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

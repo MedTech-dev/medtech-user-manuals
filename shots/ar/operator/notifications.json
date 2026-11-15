@@ -1,0 +1,22 @@
+{
+  "image": "notifications.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 448,
+  "markers": {
+    "1": {
+      "x": 17.34,
+      "y": 10.6
+    },
+    "2": {
+      "x": 82.72,
+      "y": 24.78
+    },
+    "3": {
+      "x": 50,
+      "y": 32.14
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

@@ -1,0 +1,26 @@
+{
+  "image": "follow-up.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 1280,
+  "markers": {
+    "1": {
+      "x": 59.64,
+      "y": 18.09
+    },
+    "2": {
+      "x": 58.52,
+      "y": 23.52
+    },
+    "3": {
+      "x": 40.08,
+      "y": 77.73
+    },
+    "4": {
+      "x": 60.21,
+      "y": 94.88
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}

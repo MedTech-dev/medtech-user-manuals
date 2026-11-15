@@ -1,0 +1,26 @@
+{
+  "image": "enrol-code.png",
+  "device": "desktop",
+  "width": 960,
+  "height": 672,
+  "markers": {
+    "1": {
+      "x": 31.62,
+      "y": 63.02
+    },
+    "2": {
+      "x": 87.19,
+      "y": 77.98
+    },
+    "3": {
+      "x": 61.28,
+      "y": 90.1
+    },
+    "4": {
+      "x": 52.04,
+      "y": 95.24
+    }
+  },
+  "captured": "2026-11-12",
+  "source": "medtech-frontend main (mock data)"
+}
