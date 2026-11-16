@@ -1,0 +1,22 @@
+{
+  "image": "app-review.png",
+  "device": "phone",
+  "width": 788,
+  "height": 1754,
+  "markers": {
+    "1": {
+      "x": 58.2,
+      "y": 21.8
+    },
+    "2": {
+      "x": 76.7,
+      "y": 31.5
+    },
+    "3": {
+      "x": 36.1,
+      "y": 46.9
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "MedTech patient app, Android emulator (screens by the app team)"
+}

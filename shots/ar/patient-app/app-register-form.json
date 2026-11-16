@@ -1,0 +1,34 @@
+{
+  "image": "app-register-form.png",
+  "device": "phone",
+  "width": 788,
+  "height": 1754,
+  "markers": {
+    "1": {
+      "x": 80,
+      "y": 26.9
+    },
+    "2": {
+      "x": 81.4,
+      "y": 37.4
+    },
+    "3": {
+      "x": 34.9,
+      "y": 52.5
+    },
+    "4": {
+      "x": 74.2,
+      "y": 60.9
+    },
+    "5": {
+      "x": 90,
+      "y": 77.2
+    },
+    "6": {
+      "x": 71.3,
+      "y": 80.7
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "MedTech patient app, Android emulator (screens by the app team)"
+}

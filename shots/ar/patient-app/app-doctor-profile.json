@@ -1,0 +1,30 @@
+{
+  "image": "app-doctor-profile.png",
+  "device": "phone",
+  "width": 788,
+  "height": 1754,
+  "markers": {
+    "1": {
+      "x": 33.2,
+      "y": 28.8
+    },
+    "2": {
+      "x": 85.5,
+      "y": 34.0
+    },
+    "3": {
+      "x": 71.3,
+      "y": 41.6
+    },
+    "4": {
+      "x": 71.4,
+      "y": 59.0
+    },
+    "5": {
+      "x": 50,
+      "y": 81.5
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "MedTech patient app, Android emulator (screens by the app team)"
+}

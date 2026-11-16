@@ -1,0 +1,22 @@
+{
+  "image": "app-find-program.png",
+  "device": "phone",
+  "width": 788,
+  "height": 1754,
+  "markers": {
+    "1": {
+      "x": 55.7,
+      "y": 24.4
+    },
+    "2": {
+      "x": 30.9,
+      "y": 44.0
+    },
+    "3": {
+      "x": 70.1,
+      "y": 48.6
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "MedTech patient app, Android emulator (screens by the app team)"
+}

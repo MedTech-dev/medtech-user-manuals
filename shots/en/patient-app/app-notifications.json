@@ -1,0 +1,26 @@
+{
+  "image": "app-notifications.png",
+  "device": "phone",
+  "width": 788,
+  "height": 1754,
+  "markers": {
+    "1": {
+      "x": 75.7,
+      "y": 17.6
+    },
+    "2": {
+      "x": 47.5,
+      "y": 21.8
+    },
+    "3": {
+      "x": 33.3,
+      "y": 26.6
+    },
+    "4": {
+      "x": 87,
+      "y": 30.0
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "MedTech patient app, Android emulator (screens by the app team)"
+}

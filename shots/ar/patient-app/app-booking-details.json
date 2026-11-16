@@ -1,0 +1,30 @@
+{
+  "image": "app-booking-details.png",
+  "device": "phone",
+  "width": 788,
+  "height": 1754,
+  "markers": {
+    "1": {
+      "x": 72.5,
+      "y": 20.5
+    },
+    "2": {
+      "x": 79.9,
+      "y": 34.8
+    },
+    "3": {
+      "x": 38,
+      "y": 59.4
+    },
+    "4": {
+      "x": 71.2,
+      "y": 65.05
+    },
+    "5": {
+      "x": 55.3,
+      "y": 69.35
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "MedTech patient app, Android emulator (screens by the app team)"
+}
