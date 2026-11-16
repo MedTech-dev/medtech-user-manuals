@@ -2,25 +2,25 @@
   "image": "builder-consent.png",
   "device": "desktop",
   "width": 1095,
-  "height": 958,
+  "height": 1002,
   "markers": {
     "1": {
       "x": 77.01,
-      "y": 31.05
+      "y": 34.08
     },
     "2": {
       "x": 71.24,
-      "y": 38.78
+      "y": 41.47
     },
     "3": {
       "x": 80.6,
-      "y": 59.03
+      "y": 60.83
     },
     "4": {
       "x": 35.71,
-      "y": 59.03
+      "y": 60.83
     }
   },
-  "captured": "2026-11-12",
+  "captured": "2026-11-16",
   "source": "medtech-frontend main (mock data)"
 }

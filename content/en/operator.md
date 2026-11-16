@@ -64,7 +64,7 @@ The menu also holds **Dashboards**, **Product Hub**, **Doctor network**, **Pharm
 
 ::shot overview | Overview.
 1. **Overview** shows where your programmes stand right now.
-2. How many new requests are waiting for validation. Validation is the coordinators' work: **Open the worklist** opens only for a Program Coordinator.
+2. How many new requests are waiting for validation. Validation is the coordinators' work; they open these requests from their worklist.
 3. **Active cases**, next to **Registered patients** and **Completed coupons**.
 4. **Unallocated places**: places that no doctor, pharmacy or coordinator holds yet.
 5. **Live programs**: how many programmes are open for enrolment.
@@ -151,7 +151,9 @@ A programme is one scheme: one drug, one discount, one network.
 
 ## Build a new programme
 
-Press **New program**. The builder has eight steps, shown in a bar at the top. **Continue** checks the step on screen and moves on; you can also click any step in the bar to go back to it. What you type is kept while you move between steps. A new programme is saved as a draft: it enrols nobody until you launch it.
+Press **New program**. The builder has eight steps, shown in a bar at the top. **Continue** checks the step on screen and moves on; you can also click any step in the bar to go back to it. What you type is kept while you move between steps. Nothing is saved until you save on the last step, **Review & save**; if you try to leave with unsaved changes, the portal asks *Leave without saving?* A new programme is saved as a draft: it enrols nobody until you launch it.
+
+You can also fill the builder from an Excel file instead of typing: see [Set up or copy a programme with Excel](#set-up-or-copy-a-programme-with-excel).
 
 ### 1. Identity & product
 
@@ -253,9 +255,62 @@ For **Home nurse**, write the **Preparation instructions** the patient reads bef
 
 ### 8. Review & save
 
-**Review & save** shows a summary of the whole programme. Press **Create program** to save it as a draft. You are taken back to the programme list.
+**Continue** on the Fulfilment step opens **Review & save**, a summary of the whole programme. Press **Create program** to save it as a draft (when you edit a saved programme, the button reads **Save**). You are taken back to the programme list. This is the only place the builder saves.
 
-> [!note] Pressing **Continue** on the Fulfilment step saves the programme straight away. To read the summary first, click **Review & save** in the step bar. Either way the programme is only a draft: you can open it and change anything before you launch it.
+### Set up or copy a programme with Excel
+
+Above the step bar, the builder has three Excel buttons. Only Operator Admins and the Super Admin see them.
+
+::shot excel-toolbar | The Excel buttons in the builder.
+1. The builder: **New program**, or **Edit program** for a saved one.
+2. **Download template**: a blank Excel template to fill in.
+3. **Import from Excel**: fills the builder's steps from a filled-in template.
+4. **Export to Excel**: saves everything the builder holds now as an Excel file, the same layout as the template.
+
+**The template.** Each settings sheet has four columns, **Key**, **Field (EN)**, **Field (AR)** and **Value**, with one setting per row: you type only in **Value**. The sheets follow the builder's steps:
+
+| Sheet | What you fill in |
+|---|---|
+| Identity | Programme name in English and Arabic; the product and the health condition, each chosen from a dropdown of your office's own list |
+| Funding | Funded coupons, doses per coupon |
+| Financial | Discount model, shape, paid and free doses, which dose is free, window and grace-period days, tier shape, whether the patient consents to the financial review |
+| Routes | The four ways in, each TRUE or FALSE |
+| Consent | Consent text and lifecycle summary, in English and Arabic |
+| Validation | Case lock (minutes), upload window (days), the upload extension, default expiry (days), the follow-up visit and its earliest and latest days |
+| Fulfilment | Method, Box Serial tracking, restricted serial tracking, serial tracking, where the patient pays, delivery-code validity (days), expiry warning (days), Advanced pharmacy search, preparation instructions in English and Arabic, and the nurse provider's name and contact |
+
+The lists have a sheet each, with one row per entry: **Strengths**, **Diagnoses**, **Tiers**, **DoseWindows**, **Documents**, **MedicalRejectionReasons**, **FinancialRejectionReasons**, **CorrectionReasons** and **CancellationReasons**. A hidden sheet holds your office's products and health conditions for the dropdowns.
+
+Some dropdowns show short codes instead of the builder's words:
+
+| In the sheet | In the builder |
+|---|---|
+| cycleBased / tieredCoPayment | **Buy & get** / **Tiered co-payment** |
+| singleOperation / timeWindow | **Bought together** / **Over a period** |
+| singleLevel / multipleLevels / fixedLevelWithRejection | **One level for everyone** / **Several levels** / **One level, with rejection** |
+| pharmacy / homeNurse | **Pharmacy collection** / **Home nurse** |
+| none / free / restricted (serial tracking) | Box Serial tracking off / Box Serial tracking on / Box Serial tracking and **Restricted serial tracking** both on |
+| atPharmacy / inApp | **At the pharmacy** / **In the app** |
+
+**Importing.** Press **Import from Excel** and choose the file (an .xlsx of up to 5 MB). The portal checks it and counts the errors and warnings. Press **Fill the builder** to put its values into the steps; if you had changes you had not saved, the button reads **Replace my changes**, because the file replaces them.
+
+::shot excel-applied | A programme copied from another programme's export.
+1. **Imported from** names the file you used.
+2. *Not saved yet.* Check each step, fix any problem listed, then save on **Review & save**.
+3. Hides this result.
+4. **Warnings**: listed by builder step, each with its sheet, row and column. Here the file came from another programme, so its list rows are added as new ones.
+5. The steps are filled in from the file, starting with **Program name**.
+6. The builder still checks the values: here the copied drug already has a programme, so choose another drug before you save.
+
+::shot excel-errors | A template imported without being filled in.
+1. *Not saved yet.* The problems are listed below, and they must be fixed on their steps before you save.
+2. **Errors**: what must be fixed.
+3. The errors are grouped by the builder step they belong to; each names the sheet, row and column, then what to fix.
+4. A step with an error is marked in red in the step bar, and the builder opens on the first one.
+
+> [!note] An import never saves anything. The values wait in the builder until you save on **Review & save**, so you can check every step first. On a programme that already has enrolled patients, any change the file makes to a frozen setting is listed as an error.
+
+**Copying or editing offline.** Open a saved programme with **Edit in builder** and press **Export to Excel**: you get a filled-in file with all the builder's settings and lists. Import it into **New program** to start a copy, or change it in Excel and import it back into the same programme. The enrolment form, the networks and the places are not in the file.
 
 ## Check and launch a programme
 
@@ -264,11 +319,9 @@ Open the programme from the list. Its page shows every setting, the patient cons
 ::shot program-checks | A new draft programme.
 1. **Edit in builder** reopens the builder on this programme.
 2. The programme's settings as saved, including whether **Advanced pharmacy search** is on.
-3. **Launch checks**: every check must pass before the programme can go live. A green tick passes; a red cross names what is still missing. A pharmacy programme needs **Box Serial tracking** or **Advanced pharmacy search** switched on.
+3. **Launch checks**: every check must pass before the programme can go live. A green tick shows what is in place; a red cross says what is still missing. A pharmacy programme needs **Box Serial tracking** or **Advanced pharmacy search** switched on.
 4. **Build the enrollment form** takes you straight to the form when that check fails.
 5. **Launch — blocked** while a check fails. When all pass, the button reads **Launch this program**: press it and the programme goes live.
-
-> [!tip] If a check you have just fixed still shows a red cross, wait half a minute and open the programme again.
 
 ## Change or stop a programme
 
@@ -283,7 +336,7 @@ You can change a programme at any time with **Edit in builder**. Once a patient 
 - Box Serial tracking;
 - Advanced pharmacy search.
 
-The builder also keeps the delivery-code validity greyed out, and the programme page reads *Yes — configuration is frozen*. To change those settings, stop the programme and create a new one.
+The programme page then reads *Yes — configuration is frozen*. To change those settings, stop the programme and create a new one.
 
 ::shot program-stop | Stopping a live programme.
 1. **Stopping is final — there is no reopen.** New enrolments stop on every route. Patients already approved keep their coupons and finish their course.

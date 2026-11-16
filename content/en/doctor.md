@@ -24,6 +24,7 @@ The doctor portal is a web page. It works on a computer, a tablet or a phone.
 3. Click the eye to show the password while you type it.
 4. **Sign in** opens the portal.
 5. Switch the screen between English and العربية at any time.
+6. **How to use this portal** opens this guide.
 
 ## Find your way around
 
@@ -36,7 +37,7 @@ The portal opens on **Coupon balance**. The menu is always on the left.
 4. **Notifications** — your alerts. The red number counts the unread ones.
 5. Your name, and your role (*Doctor* or *Assistant*).
 6. Switch between a light and a dark screen.
-7. The settings menu: **Language** (English or العربية) and **Sign out**. Always sign out on a shared computer.
+7. The settings menu: **Language** (English or العربية), **User guide** (opens this guide in a new tab) and **Sign out**. Always sign out on a shared computer.
 
 | Menu | What it is for |
 |---|---|
@@ -328,7 +329,7 @@ Use this for a patient in front of you who has no MedTech app account yet. Open 
 
 ::shot enrol-identity | The patient's mobile, code and ID.
 1. **Today's walk-in patients** — pick the patient from today's walk-in list to fill in their phone and name. Optional.
-2. **Patient's mobile number**, then **Send code**.
+2. **Patient's mobile number** — the patient's own mobile; the code is sent to it. If the patient already uses the app, enter the number their account uses. Then press **Send code**.
 3. The code can be sent again after the countdown.
 4. **Confirmation code** — the patient reads you the 6-digit code from their phone.
 5. **Patient's full name**.
@@ -430,14 +431,16 @@ An assistant helps you run one of your clinics. Only you, the doctor, can add, c
 4. **Clinic** — an assistant works at one clinic only.
 5. **Permissions** — click to open the list of switches.
 
-::shot assistant-permissions | The permissions, grouped.
-1. Each group is one kind of work: **Front desk**, **Changes and cancellations**, **Clinic setup**, **Sensitive information**.
-2. Payments are always view-only for an assistant.
-3. **Support programs (PSP)** — enrolling spends your places.
-4. **Enroll patients into support programs for you** starts off. Switch it on only if you want the assistant to enrol.
-5. **Create account**.
+A new assistant starts with every booking permission on, and programme enrolment off. Press **Create account**; the assistant appears in the list.
 
-A new assistant starts with every booking permission on, and programme enrolment off. After you create the account, the assistant appears in the list with the clinic they work at. Open **Permissions** on their row to change the switches, then press **Save**. The bin removes the assistant; they lose access at once.
+::shot assistant-permissions | An assistant in your list, with their permissions open.
+1. The assistant's name and phone number. *Active* means they can sign in.
+2. The clinic they work at.
+3. **Permissions** — click to open or close the switches. The count shows how many are on.
+4. Each group is one kind of work: **Front desk**, **Changes and cancellations**, **Clinic setup**, **Sensitive information** and **Support programs (PSP)**. Payments are always view-only for an assistant.
+5. **Enroll patients into support programs for you** starts off, because enrolling spends your places. Switch it on only if you want this assistant to enrol.
+6. **Save** applies your changes; **Cancel** drops them.
+7. The bin removes the assistant. They lose access at once.
 
 ### What an assistant can and cannot do
 
@@ -451,22 +454,24 @@ A new assistant starts with every booking permission on, and programme enrolment
 | Change the booking rules | Only with **Change clinic settings** — otherwise view only |
 | See intake answers and medical records | Only with **See patient medical records** |
 | See payments | Only with **See payment status**, and never refund |
-| Enrol a patient on a support programme | Only with **Enroll patients into support programs for you** |
+| Enrol a patient on a support programme, or ask for more places | Only with **Enroll patients into support programs for you** |
 | Write or edit a prescription | Never — doctors only |
 | Change the prescription letterhead | Never |
 | Manage assistants | Never |
 
 The other switches (the calendar, the intake questions, reschedule requests, undoing a check-in, the clinic dashboard) work the same way: the assistant can do only what you switch on.
 
-This is what an assistant sees without a permission:
+This is what an assistant sees without some permissions:
 
 ::shot assistant-booking | An appointment, seen by an assistant.
 1. The top bar says *Assistant*.
 2. Only the buttons the assistant is allowed. Here: **Check in**.
 3. **Medical details hidden** — this assistant may not see medical records. Payments are not shown either.
 
-::shot assistant-enrol | Enrolment, seen by an assistant without permission.
-1. The assistant is told that the doctor has not switched this permission on.
+::shot assistant-balance | Coupon balance, seen by an assistant who may not enrol.
+1. The programme cards…
+2. …and the counters are shown, but there is no **Enroll a patient** or **Request more places**.
+3. **Give coupon** opens a message saying the doctor has not switched this permission on.
 
 ## Quick answers
 

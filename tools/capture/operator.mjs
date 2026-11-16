@@ -6,6 +6,7 @@
 // Framing: the site shows a desktop screenshot at the width of the text column (about 940 px) and places
 // markers as a share of that column, so every shot here is at least ~1100 px wide — the visible content
 // column, a dialog with the screen around it, or a whole tall page — never a narrow crop.
+import fs from 'node:fs';
 import { run } from './lib.mjs';
 
 const ONLY = process.env.ONLY ? process.env.ONLY.split(',') : null;
@@ -457,9 +458,7 @@ await run('operator', { port: 5381, device: 'desktop', source: 'medtech-frontend
       6: [text(op('programs.field.advancedSearchOnHint')), 'end'],
       7: [text(op('programs.field.blisterAutoNote')), 'bottom'],
     });
-    // Continue on this step saves at once (the button turns into Create program during the click),
-    // so the review is opened from the step bar.
-    await railStep('review').click();
+    await cont.click();
     const create = btn(op('programs.new.submit'));
     await create.waitFor();
     await create.click();
@@ -488,13 +487,82 @@ await run('operator', { port: 5381, device: 'desktop', source: 'medtech-frontend
     await pick(page.getByLabel(op('programs.form.questionType')).last(), op('programs.form.type.freeText'));
     await btn(L.reKey('operator.programs.form.publish')).click();
     await page.waitForURL(/\/programs$/);
-    // The programme page keeps its earlier launch checks for half a minute; wait them out.
-    await page.waitForTimeout(31_000);
     await page.getByRole('link', { name: 'Veltrix Care' }).click();
     const launch = btn(op('programs.detail.launch'));
     await launch.waitFor();
     await launch.click();
     await text(op('programs.detail.launched')).first().waitFor();
+  });
+
+  // ---------------------------------------------------------------- programme configuration in Excel
+  await part('excel', async () => {
+    const group = page.getByRole('group', { name: op('programs.excel.groupLabel') });
+    const excelBtn = (k) => group.getByRole('button', { name: op(`programs.excel.${k}`) });
+    const download = async (button) => {
+      const pending = page.waitForEvent('download');
+      await button.click();
+      return fs.readFileSync(await (await pending).path());
+    };
+    const importFile = async (buffer, name) => {
+      await excelBtn('import').click();
+      const dlg = page.getByRole('dialog', { name: op('programs.excel.importTitle') });
+      await dlg.getByLabel(op('programs.excel.fileLabel')).setInputFiles({
+        name,
+        mimeType: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        buffer,
+      });
+      await dlg.getByRole('status').waitFor();
+      await dlg.getByRole('button', { name: op('programs.excel.apply') }).click();
+      await dlg.waitFor({ state: 'hidden' });
+    };
+    const panel = page.getByTestId('program-config-import-result');
+    const railOf = () => page.getByRole('navigation', { name: L.reKey('operator.programs.wizard.stepOf') });
+
+    // The toolbar on a new programme.
+    await go('/programs/new');
+    await group.waitFor();
+    await page.waitForTimeout(400);
+    await snap('excel-toolbar', {
+      1: [page.getByRole('heading', { name: op('programs.new.title') }), 'end'],
+      // After each label: the marker lands on the next button's icon, not its text.
+      2: [excelBtn('template'), 'end'],
+      3: [excelBtn('import'), 'end'],
+      4: [excelBtn('export'), 'end'],
+    });
+
+    // Copy a saved programme: export it, then import the file into a new one.
+    await go('/programs/prog-cardia/edit');
+    await group.waitFor();
+    const copy = await download(excelBtn('export'));
+    await go('/programs/new');
+    await group.waitFor();
+    await importFile(copy, 'psp-program-config.xlsx');
+    await panel.waitFor();
+    await top();
+    await page.waitForTimeout(400);
+    await tall('excel-applied', {
+      1: [panel.getByText(op('programs.excel.appliedTitle')), 'end'],
+      2: [panel.getByText(op('programs.excel.appliedWithIssues')), 'end'],
+      3: [panel.getByRole('button', { name: op('programs.excel.dismiss') }), 'start'],
+      4: [panel.getByText(L.reKey('operator.programs.excel.warningsTitle')), 'end'],
+      5: [label(op('programs.field.name')), 'end'],
+      6: [page.getByText(L.reKey('operator.programs.field.productInUse')), 'end'],
+    });
+
+    // The blank template, imported as it is: its problems, on their steps.
+    await go('/programs/new');
+    await group.waitFor();
+    const blank = await download(excelBtn('template'));
+    await importFile(blank, 'psp-program-config-template.xlsx');
+    await panel.waitFor();
+    await top();
+    await page.waitForTimeout(400);
+    await snap('excel-errors', {
+      1: [panel.getByText(op('programs.excel.appliedWithIssues')), 'end'],
+      2: [panel.getByText(L.reKey('operator.programs.excel.errorsTitle')), 'end'],
+      3: [panel.getByText(op('programs.step.identity'), { exact: true }), 'end'],
+      4: [railOf().getByRole('button', { name: new RegExp(esc(op('programs.step.funding'))) }), 'end'],
+    });
   });
 
   // ---------------------------------------------------------------- stopping a live programme
@@ -566,8 +634,6 @@ await run('operator', { port: 5381, device: 'desktop', source: 'medtech-frontend
   });
 
   await part('pharmacies', async () => {
-    // The pharmacy table is wide: a wider window shows every column at once.
-    await page.setViewportSize({ width: 1640, height: VIEWPORT.height });
     await go('/network/pharmacies');
     await pickProgram(PROG.onco);
     const roshdy = page.getByRole('row', { name: /Roshdy/ });
@@ -587,7 +653,6 @@ await run('operator', { port: 5381, device: 'desktop', source: 'medtech-frontend
       7: [ezaby.getByRole('button', { name: L.reKey('operator.network.stock.toggleFor') }), 'bottom'],
     }, { clip: f });
     await unframe();
-    await page.setViewportSize(VIEWPORT);
   });
 
   // ---------------------------------------------------------------- places

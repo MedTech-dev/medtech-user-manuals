@@ -2,106 +2,8 @@
 //   MEDTECH_FRONTEND=<checkout> node tools/capture/admin.mjs [en|ar|all]
 // Needs the admin portal running in mock mode on http://localhost:5380.
 //
-// Two directories of the portal (Users and Doctors) have no demo data in mock mode. For those two,
-// this script answers the portal's requests itself with a small demonstration set (fictional people,
-// in the same shapes the portal reads) so the real screens can be shown. Nothing leaves the machine.
+// Everything shown is the portal's own demonstration data; nothing here is a real person.
 import { run } from './lib.mjs';
-
-// ---------------------------------------------------------------- demo data for Users and Doctors
-function demoData(lang) {
-  const ar = lang === 'ar';
-  const n = (en, arText) => (ar ? arText : en);
-  const users = [
-    { id: 'u-admin-1', displayName: 'Admin One', phoneNumber: '01000000000', email: 'admin@medtech.example', userType: 'admin', roles: ['Admin'], isActive: true, createdDate: '2026-08-01T09:00:00Z' },
-    { id: 'u-pt-salma', displayName: n('Salma Tarek Mansour', 'سلمى طارق منصور'), phoneNumber: '01098765432', email: null, userType: 'patient', roles: ['Patient'], isActive: true, createdDate: '2026-10-02T11:20:00Z' },
-    { id: 'u-pt-youssef', displayName: n('Youssef Adel Naguib', 'يوسف عادل نجيب'), phoneNumber: '01155554444', email: null, userType: 'patient', roles: ['Patient'], isActive: false, createdDate: '2026-09-21T08:05:00Z' },
-    { id: 'u-doctor-1', displayName: n('Dr. Nour Hassan', 'د. نور حسن'), phoneNumber: '01000000002', email: 'nour.hassan@clinic.example', userType: 'doctor', roles: ['Doctor'], isActive: true, createdDate: '2026-08-03T10:00:00Z' },
-    { id: 'u-assistant-1', displayName: n('Mona Fahmy', 'منى فهمي'), phoneNumber: '01000000006', email: null, userType: 'assistant', roles: ['Assistant'], isActive: true, createdDate: '2026-08-05T10:00:00Z' },
-    { id: 'u-pharm-1', displayName: n('El Ezaby Pharmacy — Nasr City', 'صيدلية العزبي - مدينة نصر'), phoneNumber: '01012345001', email: null, userType: 'pharmacy', roles: ['Pharmacy'], isActive: true, createdDate: '2026-09-10T10:00:00Z' },
-    { id: 'u-siof-1', displayName: n('Hala Mansour', 'هالة منصور'), phoneNumber: '01001234567', email: 'ops@sofico.example', userType: 'scientificOffice', roles: ['ScientificOffice', 'SiofAdmin'], isActive: true, createdDate: '2026-08-02T10:00:00Z' },
-  ];
-  const userDetail = {
-    'u-pt-salma': {
-      patient: {
-        profileId: 'p-salma', fullName: n('Salma Tarek Fouad Mansour', 'سلمى طارق فؤاد منصور'), nationalId: '29103151204567',
-        dateOfBirth: '1991-03-15', gender: 'Female', address: n('12 El Tahrir St., Dokki, Giza', '١٢ شارع التحرير، الدقي، الجيزة'),
-        phoneNumber: '01098765432', isPspProfileComplete: true,
-      },
-    },
-  };
-  const docs = (approved, pending) => {
-    const types = ['nationalId', 'syndicateCard', 'practiceLicense', 'degreeCertificate'];
-    return types.map((t, i) => ({
-      id: 4100 + i, documentType: t, document: `https://files.medtech.example/demo/${t}.pdf`,
-      reviewStatus: i < approved ? 'approved' : i < approved + pending ? 'pending' : 'reuploadRequested',
-      reviewedAt: i < approved ? '2026-11-03T10:00:00Z' : null, uploadedAt: '2026-11-01T09:30:00Z',
-      reviewNote: null,
-    }));
-  };
-  const doctors = [
-    { id: '47609b32-c4f9-4fe2-8b62-ce96d011129c', code: 'DOC-EG-47609B', first: ['Ahmed', 'أحمد'], last: ['Hassan', 'حسن'], phoneNumber: '01142676306', state: 'pendingReview', licenseNumber: 'EMS-2017-55120', city: [1, 'Nasr City', 'مدينة نصر'], spec: [1, 'Cardiology', 'قلب وأوعية دموية'], docs: [4, 0], created: '2026-11-01T09:00:00Z' },
-    { id: '019feb6e-faa5-71c0-9868-5128dbe0ae15', code: 'DOC-EG-019FEB', first: ['Nour', 'نور'], last: ['Hassan', 'حسن'], phoneNumber: '01000000002', state: 'active', licenseNumber: 'LIC-2019-4471', city: [3, 'Maadi', 'المعادي'], spec: [1, 'Cardiology', 'قلب وأوعية دموية'], docs: [4, 0], created: '2026-08-03T10:00:00Z' },
-    { id: 'doc-3', code: 'DOC-EG-3D0C03', first: ['Omar', 'عمر'], last: ['Selim', 'سليم'], phoneNumber: '01223344556', state: 'pendingReview', licenseNumber: 'EMS-2021-10077', city: [2, 'Heliopolis', 'مصر الجديدة'], spec: [2, 'Dermatology', 'جلدية'], docs: [2, 2], created: '2026-11-06T12:00:00Z' },
-    { id: 'd-sara', code: 'DOC-EG-2F492A', first: ['Sara', 'سارة'], last: ['Mostafa', 'مصطفى'], phoneNumber: '01011223344', state: 'suspended', licenseNumber: 'EMS-2015-30981', city: [1, 'Nasr City', 'مدينة نصر'], spec: [2, 'Dermatology', 'جلدية'], docs: [4, 0], created: '2026-08-20T10:00:00Z' },
-    { id: 'd-mona', code: 'DOC-EG-6E21B4', first: ['Mona', 'منى'], last: ['Saleh', 'صالح'], phoneNumber: '01099887711', state: 'rejected', licenseNumber: 'EMS-2020-44102', city: [4, 'Dokki', 'الدقي'], spec: [5, 'Internal Medicine', 'باطنة'], docs: [3, 0], created: '2026-09-02T10:00:00Z' },
-  ];
-  const row = (d) => ({
-    id: d.id, code: d.code, fullNameEnglish: `${d.first[0]} ${d.last[0]}`, fullNameArabic: `${d.first[1]} ${d.last[1]}`,
-    phoneNumber: d.phoneNumber, state: d.state, licenseNumber: d.licenseNumber, cityId: d.city[0], cityNameEn: d.city[1],
-    cityNameAr: d.city[2], specialities: [ar ? d.spec[2] : d.spec[1]], documentsTotal: 4, documentsApproved: d.docs[0],
-    documentsPending: d.docs[1], createdDate: d.created, stateChangedAt: d.created,
-  });
-  const detail = (d) => ({
-    id: d.id, code: d.code, firstNameEnglish: d.first[0], lastNameEnglish: d.last[0], firstNameArabic: d.first[1], lastNameArabic: d.last[1],
-    phoneNumber: d.phoneNumber, email: `${d.first[0].toLowerCase()}.${d.last[0].toLowerCase()}@clinic.example`, state: d.state,
-    rejectionReason: null, stateChangedAt: '2026-11-04T08:00:00Z', licenseNumber: d.licenseNumber, cityId: d.city[0], cityNameEn: d.city[1],
-    cityNameAr: d.city[2], educationLevel: 'consultantDoctor',
-    aboutMeEnglish: 'Consultant with fifteen years of practice.',
-    aboutMeArabic: 'استشاري، خبرة خمسة عشر عامًا.',
-    profileImage: null, feesMin: 400, feesMax: 650, ratingCount: 0, starRating: 0, specialityIds: [d.spec[0]],
-    specialities: [ar ? d.spec[2] : d.spec[1]], documents: docs(d.docs[0], d.docs[1]),
-    stateHistory: [
-      { fromState: 'draft', toState: 'pendingReview', reason: null, changedByUserId: null, changedAt: '2026-11-04T08:00:00Z' },
-    ],
-    activationBlockers: d.state === 'pendingReview' && d.docs[0] < 4
-      ? [
-          { code: 'document_unapproved', message: 'Practice license is awaiting approval.', field: 'practiceLicense' },
-          { code: 'document_unapproved', message: 'Degree certificate is awaiting approval.', field: 'degreeCertificate' },
-        ]
-      : [],
-    createdDate: d.created,
-  });
-  return { users, userDetail, doctors, row, detail };
-}
-
-const ok = (data) => ({ status: 200, contentType: 'application/json', body: JSON.stringify({ success: true, message: null, data }) });
-const pageOf = (items) => ({ data: items, currentPage: 1, totalPages: 1, totalCount: items.length, pageSize: 20, hasPreviousPage: false, hasNextPage: false });
-
-async function serveDemoDirectories(context, lang) {
-  const d = demoData(lang);
-  await context.route(/\/api\/admin\/users(\/[^?]*)?(\?.*)?$/, (route) => {
-    const url = new URL(route.request().url());
-    const id = url.pathname.split('/')[4];
-    if (route.request().method() !== 'GET') return route.fulfill(ok(true));
-    if (!id) {
-      const q = (url.searchParams.get('search') ?? '').toLowerCase();
-      const type = url.searchParams.get('userType');
-      const items = d.users.filter((u) => (!q || `${u.displayName} ${u.phoneNumber} ${u.email ?? ''}`.toLowerCase().includes(q)) && (!type || u.userType === type));
-      return route.fulfill(ok(pageOf(items)));
-    }
-    const u = d.users.find((x) => x.id === id);
-    return route.fulfill(ok({ ...u, patient: null, doctor: null, pharmacy: null, assistant: null, scientificOffice: null, ...(d.userDetail[id] ?? {}) }));
-  });
-  await context.route(/\/api\/admin\/doctors(\/[^?]*)?(\?.*)?$/, (route) => {
-    const url = new URL(route.request().url());
-    const id = url.pathname.split('/')[4];
-    if (route.request().method() !== 'GET') return route.fulfill(ok(null));
-    if (!id) return route.fulfill(ok(pageOf(d.doctors.map(d.row))));
-    const doc = d.doctors.find((x) => x.id === id);
-    if (url.pathname.endsWith('/activation-blockers')) return route.fulfill(ok(d.detail(doc).activationBlockers));
-    return route.fulfill(ok(d.detail(doc)));
-  });
-}
 
 await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend main (mock data)' }, async ({ context, page, L, shot, focus, base, lang }) => {
   const key = (k) => L.key(`admin.${k}`);
@@ -130,7 +32,6 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
     const add = () => { const s = document.createElement('style'); s.textContent = css; document.head.appendChild(s); };
     if (document.head) add(); else document.addEventListener('DOMContentLoaded', add);
   });
-  await serveDemoDirectories(context, lang);
 
   // ---------------------------------------------------------------- sign in
   await page.goto(`${base}/login`);
@@ -145,6 +46,7 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
     3: [btn(L('Show password')), ar ? 'start' : 'end'],
     4: btn(L('Sign in')),
     5: [btn(/^(العربية|English)$/), 'start'],
+    6: link(ck('auth.userGuide')),
   });
   await btn(L('Sign in')).click();
   await link(key('nav.clinicApprovals')).waitFor();
@@ -155,11 +57,23 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
   await shot('home', {
     1: text(ck('nav.menu'), { exact: true }),
     2: navBadge('nav.pspMisuse'),
-    3: main.getByText(/^[2٢]$/),
-    4: main.getByText(/^[4٤]$/),
+    3: text(key('dashboard.card.activeSiofs'), { exact: true }),
+    4: text(key('dashboard.card.exceptionApprovedUnfulfilled'), { exact: true }),
     5: link(key('dashboard.next.action')),
     6: btn(ck('settings.title')),
   });
+
+  await btn(ck('settings.title')).click();
+  const settings = page.getByRole('menu');
+  await settings.waitFor();
+  await page.waitForTimeout(300);
+  await shot('settings', {
+    1: settings.getByText(ck('settings.language'), { exact: true }),
+    2: [settings.getByRole('menuitem', { name: new RegExp(escRe(ck('nav.userGuide'))) }), 'start'],
+    3: settings.getByText(ck('auth.signOut'), { exact: true }),
+  });
+  await page.keyboard.press('Escape');
+  await settings.waitFor({ state: 'hidden' });
 
   // ---------------------------------------------------------------- scientific offices
   await go('/tenants', link('Sofico Scientific Office').first());
@@ -220,21 +134,25 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
   await dialog.waitFor({ state: 'hidden' });
 
   // ---------------------------------------------------------------- users
-  const salma = lang === 'ar' ? 'سلمى طارق منصور' : 'Salma Tarek Mansour';
-  await go('/users', text(salma).first());
-  const salmaRow = page.getByRole('row', { name: new RegExp(salma) });
+  await go('/users', text('Layla Ibrahim'));
+  // Show only patient accounts: the rows that carry the delete button.
+  await page.getByRole('combobox', { name: key('users.col.type') }).click();
+  await page.getByRole('option', { name: key('userType.patient'), exact: true }).click();
+  await page.getByRole('row', { name: /Hassan Gaber/ }).waitFor();
+  await page.waitForTimeout(600);
+  const laylaRow = page.getByRole('row', { name: /Layla Ibrahim/ });
+  const userRow = (name) => page.getByRole('row', { name: new RegExp(name) });
   await shot('users', {
     1: [page.getByRole('searchbox'), 'top'],
     2: [page.getByRole('combobox', { name: key('users.col.type') }), 'top'],
     3: [page.getByRole('combobox', { name: key('users.col.status') }), 'top'],
-    4: [salmaRow.getByRole('button', { name: L.reKey('admin.users.detail.open') }).last(), 'start'],
-    5: btn(L.key('common.users.deactivate')).last(),
-    6: salmaRow.getByRole('button', { name: L.reKey('admin.users.deletePatient.for') }),
-    7: text(L.key('common.users.self'), { exact: true }),
+    4: [userRow('Dina Rashad').getByRole('button', { name: L.reKey('admin.users.detail.open') }).last(), 'start'],
+    5: [userRow('Omar Farouk').getByRole('button', { name: L.key('common.users.deactivate'), exact: true }), 'start'],
+    6: userRow('Hassan Gaber').getByRole('button', { name: L.key('common.users.activate'), exact: true }),
+    7: userRow('Salma Fathy').getByRole('button', { name: L.reKey('admin.users.deletePatient.for') }),
   });
 
-  await page.getByRole('row', { name: new RegExp(salma) }).getByRole('button').first().click();
-  const nid = dialog.getByText(/•|\*{3}|x{3}/).first();
+  await laylaRow.getByRole('button').first().click();
   await dialog.getByText(key('users.detail.patient'), { exact: true }).waitFor();
   await page.waitForTimeout(400);
   await shot('user-detail', {
@@ -247,7 +165,7 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
   await page.keyboard.press('Escape');
   await dialog.waitFor({ state: 'hidden' });
 
-  await btn(L.reKey('admin.users.deletePatient.for')).first().click();
+  await laylaRow.getByRole('button', { name: L.reKey('admin.users.deletePatient.for') }).click();
   await dialog.getByText(key('users.deletePatient.mode.soft'), { exact: true }).waitFor();
   await page.waitForTimeout(300);
   await shot('delete-soft', {
@@ -259,7 +177,7 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
   }, { clip: dialog });
   await dialog.getByText(key('users.deletePatient.mode.permanent'), { exact: true }).click();
   const arm = dialog.getByLabel(key('users.deletePatient.armLabel'));
-  await arm.fill('01098765432');
+  await arm.fill('01005550101');
   await shot('delete-permanent', {
     1: dialog.getByText(key('users.deletePatient.mode.permanent'), { exact: true }),
     2: dialog.getByText(key('users.deletePatient.permanent.everything').slice(0, 40)),
@@ -270,16 +188,16 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
   await page.keyboard.press('Escape');
 
   // ---------------------------------------------------------------- doctors
-  const ahmed = lang === 'ar' ? 'أحمد حسن' : 'Ahmed Hassan';
-  await go('/doctors', link(ahmed).first());
+  const doctorRow = (code) => page.getByRole('row').filter({ hasText: code });
+  await go('/doctors', text('DOC-EG-2F492A'));
   await shot('doctors', {
     1: link(key('doctors.list.add')).first(),
     2: [page.getByPlaceholder(key('doctors.list.searchPlaceholder')), 'top'],
     3: [page.getByRole('combobox', { name: key('doctors.list.col.state') }), 'top'],
-    4: link(ahmed).first(),
-    5: text('DOC-EG-019FEB'),
-    6: main.getByText(L.key('common.status.doctor.pendingReview'), { exact: true }).first(),
-    7: text(L.reKey('admin.doctors.list.documentsProgress')).first(),
+    4: doctorRow('DOC-EG-E1A97D').getByRole('link').first(),
+    5: text('DOC-EG-47609B'),
+    6: doctorRow('DOC-EG-2F492A').getByText(L.key('common.status.doctor.pendingReview'), { exact: true }),
+    7: doctorRow('DOC-EG-2F492A').getByText(L.reKey('admin.doctors.list.documentsProgress')),
   });
 
   await link(key('doctors.list.add')).first().click();
@@ -303,31 +221,27 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
     7: btn(key('doctors.new.submit')),
   }, { full: true });
 
-  await go('/doctors', link(ahmed).first());
-  await link(ahmed).first().click();
-  await text(key('doctors.activation.title'), { exact: true }).waitFor();
+  // A doctor waiting for verification, with things still missing.
+  await go('/doctors', text('DOC-EG-2F492A'));
+  await doctorRow('DOC-EG-2F492A').getByRole('link').first().click();
+  await text(key('doctors.activation.blockedBody')).waitFor();
   await page.waitForTimeout(600);
   await shot('doctor-detail', {
-    1: text('DOC-EG-47609B'),
+    1: text('DOC-EG-2F492A'),
     2: text(key('doctors.detail.profileCard'), { exact: true }),
-    3: text(key('doctors.activation.title'), { exact: true }),
+    3: text(key('doctors.activation.blockedBody')),
     4: [btn(key('doctors.activation.action')), 'start'],
     5: btn(key('doctors.state.action.rejected'), { exact: true }),
     6: btn(key('doctors.state.action.deactivated'), { exact: true }),
   });
 
-  const omar = lang === 'ar' ? 'عمر سليم' : 'Omar Selim';
-  await go('/doctors', link(omar).first());
-  await link(omar).first().click();
   const docsTitle = text(key('doctors.detail.documentsCard'), { exact: true });
-  await docsTitle.waitFor();
-  await page.waitForTimeout(600);
   const docsCard = docsTitle.locator('xpath=ancestor::div[contains(@class,"rounded")][1]');
-  const pendingDoc = page.getByRole('row').filter({ hasText: L.key('common.docType.practiceLicense') });
+  const pendingDoc = page.getByRole('row').filter({ hasText: L.key('common.docType.syndicateCard') });
   await shot('doctor-documents', {
     1: docsTitle,
     2: link(key('doctors.detail.documents.open')).first(),
-    3: page.getByRole('row').nth(1).getByRole('cell').nth(3),
+    3: page.getByRole('row').filter({ hasText: L.key('common.docType.practiceLicense') }).getByRole('cell').nth(3),
     4: [pendingDoc.getByRole('button', { name: key('common.approve'), exact: true }), 'start'],
     5: pendingDoc.getByRole('button', { name: key('common.reject'), exact: true }),
   }, { clip: docsCard });

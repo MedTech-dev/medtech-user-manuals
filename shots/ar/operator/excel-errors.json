@@ -1,0 +1,26 @@
+{
+  "image": "excel-errors.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 804,
+  "markers": {
+    "1": {
+      "x": 55.87,
+      "y": 24.69
+    },
+    "2": {
+      "x": 88.55,
+      "y": 28.67
+    },
+    "3": {
+      "x": 87.18,
+      "y": 32.84
+    },
+    "4": {
+      "x": 70.11,
+      "y": 57.56
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "medtech-frontend main (mock data)"
+}

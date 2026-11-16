@@ -40,13 +40,13 @@ The Program Operator portal is a web page for your computer. As a Program Coordi
 ## The case worklist
 
 ::shot worklist | The case worklist, on New requests.
-1. The queues. The number on each tab is how many cases wait there.
-2. Search by patient, case reference, programme, doctor or coupon.
-3. Click a patient's name, or anywhere on the row, to open the case.
-4. Click a column title with arrows to sort by it. The newest enrolments come first.
-5. **Status** — where the case stands (see the table below).
-6. **Ownership** — who is working on the case right now.
-7. With the keyboard, **↑ ↓** move between cases and **Enter** opens one.
+1. Search all cases, in every queue, by patient or reference.
+2. The queues. The number on each tab is how many cases wait there.
+3. Search inside the open tab only — by patient, case reference, programme, doctor or coupon.
+4. Click a patient's name, or anywhere on the row, to open the case.
+5. Click a column title with arrows to sort by it. The newest enrolments come first.
+6. **Status** — where the case stands (see the table below).
+7. **Ownership** — who is working on the case right now.
 
 | Tab | What waits there |
 |---|---|
@@ -58,7 +58,7 @@ The Program Operator portal is a web page for your computer. As a Program Coordi
 | **Extension requests** | Patients who asked for more time to upload their documents. |
 | **Expiring soon** | Approved coupons that expire tomorrow. On this tab the date column shows **Coupon expires**. |
 
-Your browser's Back button brings you from a case to the same tab and page. Sorting orders the cases on the page you are looking at.
+**Back to worklist** on a case returns you to the tab and page you opened it from. Sorting orders the cases on the page you are looking at. With the keyboard, **↑ ↓** move between cases and **Enter** opens one.
 
 ::shot worklist-ownership | Ownership and markers, on Under validation.
 1. **With …** — another coordinator has this case open. You can read it but not act on it.
@@ -69,6 +69,19 @@ Your browser's Back button brings you from a case to the same tab and page. Sort
 6. The shield and number count the open abuse signals on the case.
 
 > [!tip] A red **Awaiting documents** badge with *Not ready to review* means the patient has not sent their documents yet — there is nothing to validate.
+
+### Find a case in any queue
+
+When you do not know which queue a case is in, type in the search box at the top of the page.
+
+::shot worklist-search | Searching every queue at once.
+1. The search term. The **×** (or the Esc key) clears it.
+2. How many cases match, across all queues. While you search, the tabs make way for the results.
+3. **Back to …** returns to the tab you were on.
+4. Each case shows its status, so you can tell which queue it sits in…
+5. …here **Under validation** and **Documents submitted**.
+
+If some queues have more matches than shown, the page says so — type more of the name or reference.
 
 ## Case statuses
 
@@ -95,7 +108,7 @@ Your browser's Back button brings you from a case to the same tab and page. Sort
 4. **Open case** locks the case to you.
 5. This warning appears when the patient also has a live case on another programme of your office.
 6. **Abuse signals on this case** — raised by the platform; see step 7.
-7. **Back to worklist** returns to the case worklist.
+7. **Back to worklist** returns to the tab you opened the case from.
 
 ### 2. Open the case — it locks to you
 
@@ -225,7 +238,7 @@ If no branch is attached to the programme, or the chosen branch has no box, the 
 1. **Resubmitted** — the patient sent the corrected documents.
 2. *The patient asked for more upload time* — when they asked, the current deadline and their reason.
 3. One request per case — your answer is final.
-4. **Grant extension** moves the upload deadline; **Refuse** keeps it. Both ask you to confirm.
+4. **Grant extension** moves the upload deadline; **Refuse extension** keeps it. Both ask you to confirm.
 5. Decide on the case itself as usual: **Approve**, **Request correction** or **Reject**.
 6. The correction you asked for last time.
 
@@ -242,13 +255,13 @@ On some programmes you can ask pharmacies whether they hold the medicine before 
 ::shot search-approve | Approving on a programme with advanced pharmacy search.
 1. **Dispensing pharmacy** — choose a branch as usual, or **Decide the pharmacy later**.
 2. *You can ask pharmacies for availability after approving.*
-3. **Approve case**. The coupon becomes active, but no dose is issued until a pharmacy is assigned.
+3. **Approve case**. The coupon becomes active, but no dose is issued until a pharmacy is assigned. You stay on the case.
 
 Deciding later is optional: you can still choose a branch here. On a programme without advanced pharmacy search there is no such option, and a pharmacy is required to approve.
 
 ### A case waiting for a pharmacy
 
-Approving hands the lock back. Open the case again from the **Approved** tab to work on it.
+Approving hands the lock back: press **Open case** again to work on it.
 
 ::shot search-no-pharmacy | An approved case with no pharmacy yet.
 1. **Pharmacy search** — asking assigns nothing, and the patient's details are never shared with a pharmacy.
@@ -299,7 +312,7 @@ You can send more requests at any time while the case has no pharmacy.
 1. *Offered to the patient: …* The patient chooses one of these pharmacies in the MedTech app, and the choice assigns it.
 2. **Withdraw** takes the offer back while the patient has not chosen.
 
-A new offer replaces the one already open, and withdrawing a confirmed request removes that pharmacy from the offer. You can still assign a pharmacy yourself.
+A new offer replaces the one already open, and withdrawing a confirmed request removes that pharmacy from the offer. You can still assign a pharmacy yourself. The case history records every request, reply and offer; the patient's choice appears there under **The patient**.
 
 ### Assign a pharmacy
 

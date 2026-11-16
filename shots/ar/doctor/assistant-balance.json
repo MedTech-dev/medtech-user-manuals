@@ -1,0 +1,22 @@
+{
+  "image": "assistant-balance.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 68.76,
+      "y": 21.92
+    },
+    "2": {
+      "x": 70.96,
+      "y": 29.88
+    },
+    "3": {
+      "x": 88.48,
+      "y": 33.2
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "medtech-frontend main (mock data)"
+}

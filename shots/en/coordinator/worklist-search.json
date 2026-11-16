@@ -1,0 +1,30 @@
+{
+  "image": "worklist-search.png",
+  "device": "desktop",
+  "width": 1366,
+  "height": 860,
+  "markers": {
+    "1": {
+      "x": 98.68,
+      "y": 11.4
+    },
+    "2": {
+      "x": 39.47,
+      "y": 22.73
+    },
+    "3": {
+      "x": 97.8,
+      "y": 22.79
+    },
+    "4": {
+      "x": 87.11,
+      "y": 38.9
+    },
+    "5": {
+      "x": 89.65,
+      "y": 50.23
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "medtech-frontend main (mock data)"
+}

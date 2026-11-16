@@ -2,17 +2,17 @@
   "image": "search-worklist.png",
   "device": "desktop",
   "width": 1045,
-  "height": 218,
+  "height": 197,
   "markers": {
     "1": {
-      "x": 90.36,
-      "y": 58.03
+      "x": 83.33,
+      "y": 53.55
     },
     "2": {
-      "x": 8.27,
-      "y": 49.54
+      "x": 8.3,
+      "y": 49.49
     }
   },
-  "captured": "2026-11-12",
+  "captured": "2026-11-16",
   "source": "medtech-frontend main (mock data)"
 }

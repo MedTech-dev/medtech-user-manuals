@@ -25,6 +25,7 @@ The admin portal is a web page for a computer. Everything in it applies to the w
 3. Click the eye to show the password while you type it.
 4. **Sign in** opens the portal.
 5. Switch the screen between English and العربية at any time.
+6. **How to use this portal** opens this guide in a new tab.
 
 ## The home page
 
@@ -34,7 +35,12 @@ The admin portal is a web page for a computer. Everything in it applies to the w
 3. **Active scientific offices** — how many offices are live on the platform. Beside it: **Registered patients**, **Active cases** and **Delivered coupons**.
 4. **Approved by exception, not dispensed** — approved cases whose medicine has not been handed over.
 5. **Manage scientific offices** opens the list of offices.
-6. The gear opens the settings menu: **Language**, **Theme** and **Sign out**. The sun button beside it switches between light and dark.
+6. The gear opens the settings menu (below). The sun button beside it switches between light and dark.
+
+::shot settings | The settings menu.
+1. **Language** — English or العربية.
+2. **User guide** opens this guide in a new tab, in the language you are reading.
+3. **Sign out** — always sign out when you leave a shared computer.
 
 ## Scientific offices
 
@@ -56,8 +62,6 @@ A scientific office is one organisation on the platform. Its programme operator 
 4. **Owner account** — the office's first admin. They sign in with the **Owner phone** (an Egyptian mobile, such as 01012345678) and the password you set.
 5. **Owner password** — at least 9 characters, including a number. Share it with the owner securely.
 6. **Create scientific office** creates the office, its unique code and the owner account in one step, then opens the office's page.
-
-> [!note] If the delegation tick box does not appear, delegating enrolment to pharmacies is not available on your platform yet.
 
 ### An office's page
 
@@ -85,14 +89,16 @@ This switch only gives the office's operator admins the choice. They decide, pro
 
 **Users** lists every account on the platform: patients, doctors, doctor assistants, pharmacies, scientific office admins and MedTech admins.
 
-::shot users | Users.
+::shot users | Users, showing patient accounts only.
 1. Search by phone number or email.
-2. Show only one type of account: *Patient*, *Doctor*, *Assistant*, *Admin*, *Scientific office* or *Pharmacy*.
+2. Show only one type of account: *Patient*, *Doctor*, *Assistant*, *Admin*, *Scientific office* or *Pharmacy*. Here, only patients.
 3. Show only active or only deactivated accounts.
 4. The eye (or a click on the name) opens the account's details.
-5. **Deactivate** signs the account out on every device immediately; it cannot sign in again until it is reactivated. You confirm first. A deactivated account shows **Activate** instead.
-6. The bin appears on patient accounts only: it deletes the patient's account (see below).
-7. **You** marks your own account. You cannot deactivate yourself.
+5. **Deactivate** signs the account out on every device immediately; it cannot sign in again until it is reactivated. You confirm first.
+6. **Activate** turns a deactivated account back on.
+7. The bin appears on patient accounts only: it deletes the patient's account (see below).
+
+Your own account is marked **You** in the list. You cannot deactivate yourself.
 
 ### Account details
 
@@ -157,15 +163,15 @@ A new doctor starts as a draft until their documents are verified. Give the doct
 
 ### A doctor's page and activation
 
-::shot doctor-detail | A doctor waiting for verification.
+::shot doctor-detail | A doctor waiting for verification, with things still missing.
 1. The doctor's name, status and unique code.
 2. **Profile** — specialty, city, rank, consultation fee, contact details and licence number.
-3. **Activation** tells you whether the doctor can go live. If not, it lists what is still missing — for example a document awaiting approval or a missing Arabic name.
-4. **Activate doctor** makes the doctor active and visible to patients. It only works once every requirement is met.
+3. **Activation** lists what still stands in the way, one line each — here a document awaiting review, a new copy that was requested and a document never uploaded. When nothing is missing it says **All requirements are met. This doctor can go live.**
+4. **Activate doctor** makes the doctor active and visible to patients. It stays disabled until every requirement is met.
 5. **Reject** sends the doctor back with a reason.
-6. **Close account** ends the doctor's account.
+6. **Close account** closes the doctor's account.
 
-The buttons change with the doctor's status: an active doctor has **Suspend**, a rejected doctor has **Send for review**, and so on. Except for **Activate doctor**, each change asks you to confirm. For **Reject**, **Suspend** and **Close account** a reason is required, and the doctor sees it — say what has to change. For other changes the reason is an optional note for the record.
+The buttons change with the doctor's status: an active doctor has **Suspend**, a rejected doctor has **Send for review**, and so on. Every change asks you to confirm first, including **Activate doctor**. For **Reject**, **Suspend** and **Close account** a reason is required, and the doctor sees it — say what has to change. For other changes the reason is an optional note for the record. A closed account can be reopened: **Activate doctor** on it brings the doctor back to patients, and the confirmation says so.
 
 Further down the page: **State history** (every status change, with its reason and date) and **Clinics** (the doctor's clinics).
 
@@ -174,7 +180,7 @@ Further down the page: **State history** (every status change, with its reason a
 ::shot doctor-documents | Documents on a doctor's page.
 1. **Documents** — the national ID, syndicate card, practice licence and degree certificate the doctor uploaded.
 2. **Open file** opens the document in a new tab.
-3. The document's status: *Pending review*, *Approved*, *Rejected* or *Re-upload requested*.
+3. The document's status: *Pending review*, *Approved*, *Rejected* or *Re-upload requested*. The note you sent the doctor shows under it.
 4. **Approve** accepts the document.
 5. **Reject** refuses it. Add a note so the doctor knows what to fix.
 

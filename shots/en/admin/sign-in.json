@@ -23,8 +23,12 @@
     "5": {
       "x": 92.44,
       "y": 4.65
+    },
+    "6": {
+      "x": 83.06,
+      "y": 69.45
     }
   },
-  "captured": "2026-11-15",
+  "captured": "2026-11-16",
   "source": "medtech-frontend main (mock data)"
 }

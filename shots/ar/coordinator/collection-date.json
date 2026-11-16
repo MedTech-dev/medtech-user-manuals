@@ -2,25 +2,25 @@
   "image": "collection-date.png",
   "device": "desktop",
   "width": 960,
-  "height": 422,
+  "height": 425,
   "markers": {
     "1": {
       "x": 25.27,
-      "y": 18.16
+      "y": 18.32
     },
     "2": {
       "x": 23.75,
-      "y": 36.74
+      "y": 36.81
     },
     "3": {
       "x": 23.75,
-      "y": 65.15
+      "y": 65.08
     },
     "4": {
       "x": 25.42,
-      "y": 87.76
+      "y": 87.58
     }
   },
-  "captured": "2026-11-12",
+  "captured": "2026-11-16",
   "source": "medtech-frontend main (mock data)"
 }

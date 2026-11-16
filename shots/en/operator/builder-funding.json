@@ -2,29 +2,29 @@
   "image": "builder-funding.png",
   "device": "desktop",
   "width": 1095,
-  "height": 868,
+  "height": 912,
   "markers": {
     "1": {
       "x": 16.64,
-      "y": 35.89
+      "y": 38.98
     },
     "2": {
       "x": 63.64,
-      "y": 35.89
+      "y": 38.98
     },
     "3": {
       "x": 60.29,
-      "y": 51.32
+      "y": 53.67
     },
     "4": {
       "x": 19.05,
-      "y": 67.45
+      "y": 69.02
     },
     "5": {
       "x": 20.96,
-      "y": 76.44
+      "y": 77.58
     }
   },
-  "captured": "2026-11-12",
+  "captured": "2026-11-16",
   "source": "medtech-frontend main (mock data)"
 }

@@ -1,0 +1,26 @@
+{
+  "image": "excel-toolbar.png",
+  "device": "desktop",
+  "width": 1095,
+  "height": 804,
+  "markers": {
+    "1": {
+      "x": 18.36,
+      "y": 4.98
+    },
+    "2": {
+      "x": 17.72,
+      "y": 15.92
+    },
+    "3": {
+      "x": 32.43,
+      "y": 15.92
+    },
+    "4": {
+      "x": 45.71,
+      "y": 15.92
+    }
+  },
+  "captured": "2026-11-16",
+  "source": "medtech-frontend main (mock data)"
+}

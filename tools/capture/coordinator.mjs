@@ -171,16 +171,32 @@ await run('coordinator', { port: 5381, device: 'desktop', source: 'medtech-front
   if (want('worklist')) {
     await fitTable();
     const head = (key) => page.getByRole('columnheader', { name: k(`worklist.column.${key}`) }).first();
+    const allSearch = page.getByLabel(k('worklist.globalSearch.label'));
     await shot('worklist', {
-      1: page.getByRole('tablist'),
-      2: page.getByLabel(k('worklist.search.label')),
-      3: btn(k('worklist.column.patient')),
-      4: [btn(k('worklist.column.enrolled')), 'start'],
-      5: head('status').getByText(k('worklist.column.status')),
-      6: [head('lock').getByText(k('worklist.column.lock')), 'start'],
-      7: text(k('worklist.keyboardHint')),
+      1: allSearch,
+      2: page.getByRole('tablist'),
+      3: page.getByLabel(k('worklist.search.label')),
+      4: btn(k('worklist.column.patient')),
+      5: btn(k('worklist.column.reference')),
+      6: head('status').getByText(k('worklist.column.status')),
+      7: [head('lock').getByText(k('worklist.column.lock')), 'start'],
     });
     await resetViewport();
+
+    // The header search looks through every queue at once.
+    await allSearch.fill('Fatma');
+    const count = page.getByRole('status').filter({ hasText: /across all queues|في جميع الطوابير/ }).first();
+    await count.waitFor();
+    await page.waitForTimeout(600);
+    await shot('worklist-search', {
+      1: allSearch,
+      2: count,
+      3: btn(L.reKey('operator.worklist.globalSearch.backToTab')),
+      4: page.locator('table').first().getByText(c('worklist.status.underValidation'), { exact: true }).first(),
+      5: page.locator('table').first().getByText(c('worklist.status.documentsSubmittedAwaitingValidation'), { exact: true }).first(),
+    });
+    await btn(k('worklist.globalSearch.clear')).click();
+    await page.getByRole('tablist').waitFor();
   }
 
   if (want('ownership')) {
@@ -436,11 +452,11 @@ await run('coordinator', { port: 5381, device: 'desktop', source: 'medtech-front
     }, { clip: await frameAround(dialog) });
     await dropFrame();
     await dialog.getByRole('button', { name: k('caseDecision.approve.confirm') }).click();
-    // Through the app from here on: a page load would restart the demo data.
-    await page.getByRole('heading', { name: k('worklist.title') }).waitFor();
-    await page.getByRole('tab', { name: new RegExp(k('worklist.tab.approved')) }).click();
-    await page.locator('a[href="/cases/case-search-new"]:visible').first().click();
+    // Deciding later keeps you on the case; the approval hands the lock back.
+    await dialog.waitFor({ state: 'hidden' });
     await searchCard().waitFor();
+    await btn(k('caseDetail.lock.openCta')).waitFor();
+    await clearToasts();
     await takeLock();
     await clearToasts();
     await focus(searchCard());

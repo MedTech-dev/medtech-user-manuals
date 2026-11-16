@@ -2,29 +2,29 @@
   "image": "builder-routes.png",
   "device": "desktop",
   "width": 1095,
-  "height": 710,
+  "height": 754,
   "markers": {
     "1": {
       "x": 85.04,
-      "y": 41.9
+      "y": 45.29
     },
     "2": {
       "x": 81.91,
-      "y": 50.07
+      "y": 52.98
     },
     "3": {
       "x": 82.3,
-      "y": 58.24
+      "y": 60.68
     },
     "4": {
       "x": 84.63,
-      "y": 66.41
+      "y": 68.37
     },
     "5": {
       "x": 61.47,
-      "y": 74.15
+      "y": 75.66
     }
   },
-  "captured": "2026-11-12",
+  "captured": "2026-11-16",
   "source": "medtech-frontend main (mock data)"
 }

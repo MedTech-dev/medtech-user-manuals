@@ -145,8 +145,10 @@ You do not have to wait on this screen: **Back to worklist** lets you serve the 
 ::shot hand-over | Confirmed — the last step.
 1. **Confirmed — damage the box, then hand it over.** The dose is recorded as received.
 2. The record of the handover: when it was opened, submitted and confirmed.
-3. In front of the patient, cut off the barcode or punch a hole through the carton, so the box cannot be sold again — then tick **I damaged the box — barcode destroyed, serial still readable.** Keep the serial readable: the patient brings this box back next time.
+3. In front of the patient, cut off the barcode or punch a hole through the carton, so the box cannot be sold again — then tick **I damaged the box — barcode destroyed, serial still readable.** Keep the serial readable: until the last dose, the patient brings this box back next time.
 4. **Next patient** returns to the counter.
+
+On a programme that does not track box serials, there is no serial to keep: the tick reads **I damaged the box — barcode destroyed.**
 
 ## When the code does not open
 

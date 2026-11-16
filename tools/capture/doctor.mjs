@@ -75,6 +75,7 @@ await run('doctor', { port: 5382, device: 'desktop', source: SOURCE }, async (s)
     3: [btn(L('Show password')), 'top'],
     4: btn(L('Sign in')),
     5: [btn(/^(العربية|English)$/), 'start'],
+    6: link(ckey('auth.userGuide')),
   });
   await submitSignIn();
 
@@ -588,21 +589,33 @@ await run('doctor', { port: 5382, device: 'desktop', source: SOURCE }, async (s)
       4: [dialog.getByLabel(key('assistants.field.clinic')), 'top'],
       5: dialog.getByText(key('assistants.permissions.title'), { exact: true }),
     }, { clip: dialog });
-    // The sixteen permissions, grouped. (Saving needs the live service, so the shot stops here.)
-    await dialog.getByRole('button', { name: new RegExp(key('assistants.permissions.title')) }).click();
-    await page.setViewportSize({ width: 1366, height: 1500 });
+    await dialog.getByRole('button', { name: key('assistants.create.confirm') }).click();
+    await dialog.waitFor({ state: 'hidden' });
+    await page.locator('[data-sonner-toast]').first().waitFor({ state: 'hidden', timeout: 8000 }).catch(() => {});
+
+    // The new assistant's row, with its permission switches open and enrolment being granted.
+    const name = ar ? 'سارة يوسف' : 'Sara Youssef';
+    const permissionsToggle = btn(new RegExp(key('assistants.permissions.title')));
+    const row = main.locator('div, li, article, section')
+      .filter({ hasText: name })
+      .filter({ has: permissionsToggle })
+      .last();
+    await row.waitFor();
+    await row.getByRole('button', { name: new RegExp(key('assistants.permissions.title')) }).click();
+    const enrolSwitch = row.getByRole('switch', { name: key('assistants.permission.canEnrollToPSP') });
+    await enrolSwitch.click();
+    await page.setViewportSize({ width: 1366, height: 1800 });
     await settle(500);
-    await dialog.evaluate((el) => { el.scrollTop = el.scrollHeight; });
-    await settle(400);
     await shot('assistant-permissions', {
-      1: dialog.getByText(key('assistants.group.sensitive'), { exact: true }),
-      2: dialog.getByText(key('assistants.permission.viewPayments.readOnly'), { exact: true }),
-      3: dialog.getByText(key('assistants.group.psp'), { exact: true }),
-      4: [dialog.getByRole('switch').last(), 'start'],
-      5: dialog.getByRole('button', { name: key('assistants.create.confirm') }),
-    }, { clip: dialog });
+      1: row.getByText(name, { exact: true }),
+      2: row.getByText(L.reKey('doctor.assistants.atClinic')),
+      3: row.getByRole('button', { name: new RegExp(key('assistants.permissions.title')) }),
+      4: row.getByText(key('assistants.group.frontDesk'), { exact: true }),
+      5: [enrolSwitch, 'start'],
+      6: row.getByRole('button', { name: ckey('common.save'), exact: true }),
+      7: [row.getByRole('button', { name: key('assistants.remove.title') }), 'bottom'],
+    }, { clip: row });
     await page.setViewportSize({ width: 1366, height: 860 });
-    await page.keyboard.press('Escape');
   }
 });
 
@@ -622,9 +635,11 @@ if (want('assistant-view')) {
         2: btn(key('bookings.action.checkIn')),
         3: main.getByText(key('bookings.intake.restricted.title'), { exact: true }),
       });
-      await open('/give-coupon', main.getByText(key('psp.enroll.noPermission')));
-      await shot('assistant-enrol', {
-        1: main.getByText(key('psp.enroll.noPermission')),
+      await open('/', main.getByRole('definition').first());
+      await shot('assistant-balance', {
+        1: main.getByRole('heading', { level: 2 }).first(),
+        2: main.getByRole('definition').nth(0),
+        3: helpers(s).nav.getByRole('link', { name: helpers(s).navKey('giveCoupon') }),
       });
       void L; void ckey;
     } finally {
