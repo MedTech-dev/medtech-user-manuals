@@ -153,11 +153,13 @@ One coupon covers your whole course, not one dose. Each dose gets its own delive
 
 ### If you are asked to choose a pharmacy
 
-Sometimes the programme finds more than one pharmacy that has your medicine and lets you choose. You get a notification, and the choice shows on your programme.
+Sometimes the programme team finds more than one pharmacy that has your medicine and lets you choose. The choice appears in **My programs**, marked **Required**.
 
 ::shot app-choose-pharmacy | Choose your pharmacy.
-1. The pharmacies that have your medicine.
-2. Choose the one that suits you. Your choice is final; if you need a different pharmacy later, contact programme support.
+1. **Choose your pharmacy** — these pharmacies have your medicine.
+2. Tap the pharmacy you will collect from.
+3. *Your choice is final. Only the programme team can change it later.*
+4. **Choose this pharmacy** confirms it. From then on, you collect as described below.
 
 ### At the pharmacy
 

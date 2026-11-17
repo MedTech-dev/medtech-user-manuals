@@ -1,0 +1,22 @@
+{
+  "image": "app-choose-pharmacy.png",
+  "device": "phone",
+  "width": 545,
+  "height": 655,
+  "markers": {
+    "1": {
+      "x": 51.0,
+      "y": 53.8
+    },
+    "2": {
+      "x": 54.0,
+      "y": 73.3
+    },
+    "3": {
+      "x": 8.0,
+      "y": 96.0
+    }
+  },
+  "captured": "2026-11-17",
+  "source": "MedTech patient app, Android (screens by the app team)"
+}

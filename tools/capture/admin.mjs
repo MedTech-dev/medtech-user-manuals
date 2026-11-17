@@ -259,8 +259,8 @@ await run('admin', { port: 5380, device: 'desktop', source: 'medtech-frontend ma
   await btn(key('pharmacies.list.add')).first().click();
   await dialog.getByLabel(key('pharmacies.field.licenceNumber')).fill('EDA-PH-14550');
   await dialog.getByLabel(L.key('common.field.phone'), { exact: true }).fill('01012345001');
-  await dialog.getByLabel(key('pharmacies.field.nameAr')).fill('صيدلية النور - مدينة نصر');
-  await dialog.getByLabel(key('pharmacies.field.nameEn')).fill('Al Nour Pharmacy — Nasr City');
+  await dialog.getByLabel(key('pharmacies.field.nameAr')).fill('صيدلية سيف الدقي');
+  await dialog.getByLabel(key('pharmacies.field.nameEn')).fill('Seif Pharmacy Dokki');
   await page.waitForTimeout(300);
   await shot('pharmacy-new', {
     1: lbl(key('pharmacies.field.licenceNumber'), dialog),
