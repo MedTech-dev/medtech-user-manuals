@@ -2,15 +2,15 @@
   "image": "pharmacy-reset.png",
   "device": "desktop",
   "width": 448,
-  "height": 316,
+  "height": 336,
   "markers": {
     "1": {
       "x": 42.73,
-      "y": 10.76
+      "y": 10.12
     },
     "2": {
       "x": 33.9,
-      "y": 65.19
+      "y": 67.26
     }
   },
   "captured": "2026-11-18",

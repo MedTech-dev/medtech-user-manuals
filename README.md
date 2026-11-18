@@ -97,6 +97,8 @@ Screenshots come from the portals running locally **in mock mode, with demonstra
    node tools/build.mjs
    ```
 
+The demo data names its pharmacies after real chains, so the capture swaps those names for made-up ones (Al Wadi, Narges, Yasmin) as each page renders, and warns if a real name is still on the page at a screenshot — see `demoNamesSwap` in `tools/capture/lib.mjs`. Locators that pick a pharmacy by name use the made-up name.
+
 When a portal's screen changes, re-run its capture script. If a label was renamed, the script fails at that step and names the missing text — update the locator, and the manual text if the label changed.
 
 ## Patient app screenshots

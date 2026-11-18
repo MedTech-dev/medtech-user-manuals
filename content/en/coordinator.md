@@ -72,16 +72,16 @@ The Program Operator portal is a web page for your computer. As a Program Coordi
 
 ### Find a case in any queue
 
-When you do not know which queue a case is in, type in the search box at the top of the page.
+When you do not know which queue a case is in, type in the search box at the top of the page: a patient's name, a case reference, a programme, a doctor or a coupon number.
 
 ::shot worklist-search | Searching every queue at once.
 1. The search term. The **×** (or the Esc key) clears it.
-2. How many cases match, across all queues. While you search, the tabs make way for the results.
+2. How many cases match, in any queue or status. While you search, the tabs make way for the results.
 3. **Back to …** returns to the tab you were on.
 4. Each case shows its status, so you can tell which queue it sits in…
 5. …here **Under validation** and **Documents submitted**.
 
-If some queues have more matches than shown, the page says so — type more of the name or reference.
+If more cases match than are shown, the page says so — type more of the name or reference.
 
 ## Case statuses
 

@@ -636,8 +636,8 @@ await run('operator', { port: 5381, device: 'desktop', source: 'medtech-frontend
   await part('pharmacies', async () => {
     await go('/network/pharmacies');
     await pickProgram(PROG.onco);
-    const roshdy = page.getByRole('row', { name: /Roshdy/ });
-    const ezaby = page.getByRole('row', { name: /El Ezaby/ });
+    const roshdy = page.getByRole('row', { name: /Yasmin/ });
+    const ezaby = page.getByRole('row', { name: /Al Wadi/ });
     await roshdy.waitFor();
     await page.waitForTimeout(400);
     const m = await main.boundingBox();

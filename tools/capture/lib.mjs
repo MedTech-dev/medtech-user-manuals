@@ -66,6 +66,66 @@ function translator(lang) {
   return L;
 }
 
+// ---------------------------------------------------------------- demo pharmacy names
+// The portals' demo data names its pharmacies after three real Egyptian chains (El Ezaby, Seif,
+// Roshdy). The guides are public, so every capture page shows made-up names instead. Text is swapped
+// as the page renders, so markers are placed against what the screenshot shows; typed form values are
+// swapped only for the moment of the screenshot and restored (the form must still submit what the
+// demo data expects). Arabic needs letter boundaries: «سيف» also sits inside words like «سيفقد».
+// The swap is a pure function so it can be passed to the browser as source.
+export function demoNamesSwap(s) {
+  const A = '[\\p{L}\\p{M}]';
+  const word = (w) => new RegExp(`(?<!${A})${w}(?!${A})`, 'gu');
+  return s
+    .replace(/ph-ezaby/g, 'ph-wadi').replace(/ph-seif/g, 'ph-narges').replace(/ph-roshdy/g, 'ph-yasmin')
+    .replace(/\bEl Ezaby\b/g, 'Al Wadi').replace(/\bEzaby\b/g, 'Al Wadi')
+    .replace(/\bSeif\b/g, 'Narges').replace(/\bRoshdy\b/g, 'Yasmin')
+    .replace(word('العزبي'), 'الوادي').replace(word('سيف'), 'النرجس').replace(word('رشدي'), 'الياسمين');
+}
+/** Anything the swap missed, for the leftover check before each screenshot. */
+const REAL_NAMES = /ezaby|\bseif\b|roshdy|العزبي|(?<![\p{L}\p{M}])سيف(?![\p{L}\p{M}])|رشدي/giu;
+
+const DEMO_NAMES_INIT = `(() => {
+  const swap = ${demoNamesSwap.toString()};
+  const ATTRS = ['aria-label', 'title', 'placeholder', 'alt'];
+  const fixText = (n) => { const v = swap(n.nodeValue); if (v !== n.nodeValue) n.nodeValue = v; };
+  const fixAttrs = (el) => { for (const a of ATTRS) { const v = el.getAttribute?.(a); if (v) { const w = swap(v); if (w !== v) el.setAttribute(a, w); } } };
+  const fixTree = (root) => {
+    if (root.nodeType === 3) return fixText(root);
+    if (root.nodeType !== 1 && root.nodeType !== 9) return;
+    if (root.nodeType === 1) fixAttrs(root);
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT | NodeFilter.SHOW_ELEMENT);
+    for (let n = w.nextNode(); n; n = w.nextNode()) n.nodeType === 3 ? fixText(n) : fixAttrs(n);
+  };
+  new MutationObserver((records) => {
+    for (const r of records) {
+      if (r.type === 'characterData') fixText(r.target);
+      else if (r.type === 'attributes') fixAttrs(r.target);
+      else r.addedNodes.forEach(fixTree);
+    }
+  }).observe(document, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ATTRS });
+  document.addEventListener('DOMContentLoaded', () => fixTree(document));
+})();`;
+
+/** Before a screenshot: swap typed values (kept for the restore) and list any real name left on the page. */
+const SWAP_VALUES = `(() => {
+  const swap = ${demoNamesSwap.toString()};
+  window.__demoNamesRestore = [];
+  const fields = [...document.querySelectorAll('input, textarea')];
+  for (const el of fields) {
+    const v = el.value, w = swap(v);
+    if (w !== v) { window.__demoNamesRestore.push([el, v]); el.value = w; }
+  }
+  const re = new RegExp(${JSON.stringify(REAL_NAMES.source)}, ${JSON.stringify(REAL_NAMES.flags)});
+  const text = (document.body ? document.body.innerText : '') + ' ' + fields.map((e) => e.value).join(' ');
+  return [...new Set(text.match(re) || [])];
+})()`;
+/** After the screenshot: put the typed values back, so the form submits what the demo data expects. */
+const RESTORE_VALUES = `(() => {
+  for (const [el, v] of window.__demoNamesRestore || []) el.value = v;
+  window.__demoNamesRestore = [];
+})()`;
+
 // ---------------------------------------------------------------- one capture session
 export async function session({ manual, port, lang, device = 'desktop', source }) {
   const browser = await chromium.launch();
@@ -73,6 +133,7 @@ export async function session({ manual, port, lang, device = 'desktop', source }
     ? { ...devices['Pixel 5'], deviceScaleFactor: 2 }
     : { viewport: { width: 1366, height: 860 }, deviceScaleFactor: 1.25 };
   const context = await browser.newContext({ ...opts, locale: lang === 'ar' ? 'ar-EG' : 'en-US', timezoneId: 'Africa/Cairo' });
+  await context.addInitScript(DEMO_NAMES_INIT);
   const page = await context.newPage();
   page.setDefaultTimeout(20_000);
   const outDir = path.join(ROOT, 'shots', lang, manual);
@@ -146,6 +207,8 @@ export async function session({ manual, port, lang, device = 'desktop', source }
     await page.waitForLoadState('networkidle').catch(() => {});
     await page.evaluate(() => document.fonts?.ready);
     await page.waitForTimeout(350);
+    const leftover = await page.evaluate(SWAP_VALUES);
+    if (leftover.length) console.warn(`  ! ${name} still shows a real pharmacy name: ${leftover.join(', ')}`);
     const file = path.join(outDir, `${name}.png`);
     let frame;
     if (opts.clip) {
@@ -160,6 +223,7 @@ export async function session({ manual, port, lang, device = 'desktop', source }
         if (p) markerPos[n]= p; else console.warn(`  ! ${name} marker ${n} not found`);
       }
       await c.screenshot({ path: file, animations: 'disabled' });
+      await page.evaluate(RESTORE_VALUES);
       return write(name, file, frame, markerPos);
     }
     if (opts.full) {
@@ -177,6 +241,7 @@ export async function session({ manual, port, lang, device = 'desktop', source }
       if (p) markerPos[n] = p; else console.warn(`  ! ${name} marker ${n} not found`);
     }
     await page.screenshot({ path: file, fullPage: !!opts.full, animations: 'disabled' });
+    await page.evaluate(RESTORE_VALUES);
     return write(name, file, frame, markerPos);
   }
 

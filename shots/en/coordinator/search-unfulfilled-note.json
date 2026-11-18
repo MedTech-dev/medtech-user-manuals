@@ -2,21 +2,21 @@
   "image": "search-unfulfilled-note.png",
   "device": "desktop",
   "width": 960,
-  "height": 356,
+  "height": 347,
   "markers": {
     "1": {
       "x": 72.6,
-      "y": 25.98
+      "y": 25.34
     },
     "2": {
       "x": 76.25,
-      "y": 57.03
+      "y": 57.21
     },
     "3": {
       "x": 74.58,
-      "y": 83.86
+      "y": 84.76
     }
   },
-  "captured": "2026-11-16",
+  "captured": "2026-11-18",
   "source": "medtech-frontend main (mock data)"
 }

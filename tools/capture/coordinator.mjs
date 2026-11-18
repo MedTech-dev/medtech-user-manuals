@@ -185,7 +185,7 @@ await run('coordinator', { port: 5381, device: 'desktop', source: 'medtech-front
 
     // The header search looks through every queue at once.
     await allSearch.fill('Fatma');
-    const count = page.getByRole('status').filter({ hasText: /across all queues|في جميع الطوابير/ }).first();
+    const count = page.getByRole('status').filter({ hasText: /any queue or status|في الطوابير أو خارجها/ }).first();
     await count.waitFor();
     await page.waitForTimeout(600);
     await shot('worklist-search', {
@@ -335,7 +335,7 @@ await run('coordinator', { port: 5381, device: 'desktop', source: 'medtech-front
     await dialog.waitFor();
     const pharmacy = dialog.getByLabel(k('caseDecision.approve.pharmacy'));
     await page.waitForTimeout(800);
-    await pick(pharmacy, () => page.getByRole('option', { name: /El Ezaby/ }));
+    await pick(pharmacy, () => page.getByRole('option', { name: /Al Wadi/ }));
     await shot('approve', {
       1: dialog.getByRole('heading').first(),
       2: dialog.getByText(L.reKey('operator.cases.assignPharmacy.patientHome')),
@@ -616,7 +616,7 @@ await run('coordinator', { port: 5381, device: 'desktop', source: 'medtech-front
     await dialog.waitFor();
     const branch = dialog.getByLabel(k('cases.assignPharmacy.pharmacy'));
     await page.waitForTimeout(800);
-    await pick(branch, () => page.getByRole('option', { name: /Seif/ }));
+    await pick(branch, () => page.getByRole('option', { name: /Narges/ }));
     await shot('reassign', {
       1: dialog.getByText(k('cases.assignPharmacy.body')),
       2: dialog.getByText(L.reKey('operator.cases.assignPharmacy.patientHome')),
