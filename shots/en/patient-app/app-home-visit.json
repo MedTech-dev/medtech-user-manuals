@@ -1,0 +1,30 @@
+{
+  "image": "app-home-visit.png",
+  "device": "phone",
+  "width": 718,
+  "height": 1600,
+  "markers": {
+    "1": {
+      "x": 34.5,
+      "y": 25.2
+    },
+    "2": {
+      "x": 93.0,
+      "y": 35.4
+    },
+    "3": {
+      "x": 40.8,
+      "y": 40.15
+    },
+    "4": {
+      "x": 60.0,
+      "y": 54.1
+    },
+    "5": {
+      "x": 65.5,
+      "y": 74.5
+    }
+  },
+  "captured": "2026-11-18",
+  "source": "MedTech patient app, Android (screens by the app team)"
+}

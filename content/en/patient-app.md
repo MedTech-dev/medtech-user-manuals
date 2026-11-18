@@ -187,10 +187,13 @@ The screen follows the pharmacist live. Until the pharmacist has prepared your d
 Some programmes deliver the dose at home.
 
 ::shot app-home-visit | Home visit.
-1. **Choose a visit time** from the times offered for your area.
-2. Enter the address for this visit.
-3. **Book the visit**.
-4. On the day, when the nurse arrives: **The nurse is here — confirm**.
+1. Your area, and **Before the visit** — how to prepare, from the programme.
+2. *You confirm on your phone right before the nurse gives the dose. Without your confirmation the nurse cannot give it.*
+3. **Choose a visit time** — times for the region on your profile only. When none are open, the app says so: look again later.
+4. **Where should the nurse come?** — the address, and notes for the nurse if you want. It is used for this visit only and is not saved to your profile.
+5. **Book the visit**.
+
+On the day, when the nurse arrives: **The nurse is here — confirm**.
 
 You can change the time of a booked visit. If the time you chose was just taken, the app asks you to choose another.
 
